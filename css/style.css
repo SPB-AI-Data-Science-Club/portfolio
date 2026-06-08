@@ -42,6 +42,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +50,19 @@ a { color: inherit; text-decoration: none; }
   padding: .9rem 2rem;
 }
 
+/* Sliding indicator — JS positions and animates this */
+.nav-slider {
+  position: absolute;
+  background: var(--burgundy);
+  border-radius: 9px;
+  pointer-events: none;
+  z-index: 0;
+  transition: left .28s cubic-bezier(.4,0,.2,1), width .28s cubic-bezier(.4,0,.2,1);
+}
+
 .nav-btn {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: .45rem;
@@ -58,20 +71,20 @@ a { color: inherit; text-decoration: none; }
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-dim);
-  transition: color .15s, background .15s;
+  transition: color .15s;
   white-space: nowrap;
 }
-.nav-btn:hover { color: var(--text); background: rgba(255,255,255,.05); }
-.nav-btn.active { background: var(--burgundy); color: #fff; }
-.nav-btn.active:hover { background: var(--burgundy-l); color: #fff; }
+.nav-btn:hover { color: var(--text); }
+.nav-btn.active { color: #fff; }
 
 .nav-github {
   background: var(--surface-2);
   border: 1px solid var(--border-l);
   color: var(--text-dim);
   margin-left: .75rem;
+  transition: color .15s;
 }
-.nav-github:hover { color: var(--text); background: var(--surface-2); }
+.nav-github:hover { color: var(--text); }
 
 /* ── Hero (home only) ── */
 .hero {
@@ -264,23 +277,40 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-dim);
 }
 
-.project-actions { margin-top: auto; }
+.project-actions {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
 
 .action-btn {
-  display: block;
-  width: 100%;
-  padding: .7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem .75rem;
   border-radius: 7px;
-  font-size: .875rem;
+  font-size: .84rem;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
   font-family: inherit;
-  transition: background .18s, transform .15s;
+  transition: background .18s, color .18s, transform .15s;
   border: none;
+  white-space: nowrap;
 }
-.action-primary { background: var(--burgundy); color: #fff; }
-.action-primary:hover { background: var(--burgundy-l); transform: translateY(-1px); }
+.action-open {
+  background: var(--burgundy);
+  color: #fff;
+}
+.action-open:hover { background: var(--burgundy-l); transform: translateY(-1px); }
+
+.action-source {
+  background: var(--surface-2);
+  border: 1px solid var(--border-l);
+  color: var(--text-dim);
+}
+.action-source:hover { color: var(--text); background: var(--surface); }
 
 /* Toast */
 .toast {
