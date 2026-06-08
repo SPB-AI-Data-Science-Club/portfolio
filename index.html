@@ -12,12 +12,10 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-tabs">
-        <button class="tab-btn active" data-tab="home">Home</button>
-        <button class="tab-btn" data-tab="projects">Projects</button>
-        <button class="tab-btn" data-tab="about">About</button>
-      </div>
-      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-cta">
+      <a href="index.html" class="nav-btn active">Home</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="projects.html" class="nav-btn">Projects</a>
+      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-btn nav-github">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
         </svg>
@@ -26,235 +24,27 @@
     </div>
   </nav>
 
-  <!-- HOME TAB -->
-  <div class="tab-content active" id="tab-home">
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="hero-grid"></div>
-        <div class="hero-glow"></div>
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">
-          SPB AI &amp; Data<br />
-          <span class="hero-accent">Science Club</span>
-        </h1>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="switchTab('projects')">View Projects</button>
-          <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="btn-ghost">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            GitHub Org
-          </a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- PROJECTS TAB -->
-  <div class="tab-content" id="tab-projects">
-    <div class="tab-page">
-      <div class="container">
-        <div class="page-header">
-          <div class="section-tag">Open Source</div>
-          <h2 class="section-title">Projects</h2>
-        </div>
-
-        <div class="projects-grid">
-
-          <article class="project-card featured">
-            <div class="project-header">
-              <span class="project-tag">Featured</span>
-              <span class="project-category">Game AI</span>
-            </div>
-            <h3 class="project-title">Chess Bot</h3>
-            <p class="project-desc">
-              AI chess opponent powered by the Stockfish engine with variable ELO difficulty (800-2000).
-              Drag-and-drop board, move history, and a hint system for learning.
-            </p>
-            <div class="project-tags">
-              <span>Python</span><span>Flask</span><span>Stockfish</span><span>chess.js</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/SPB-AI-Data-Science-Club/chess-bot" target="_blank" class="action-btn action-primary">
-                View on GitHub
-              </a>
-              <button class="action-btn action-secondary" onclick="copyClone('chess-bot')">
-                Copy Clone Command
-              </button>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <span class="project-tag tag-ml">ML</span>
-              <span class="project-category">Machine Learning</span>
-            </div>
-            <h3 class="project-title">Neural Net Visualizer</h3>
-            <p class="project-desc">
-              Watch a neural network learn in real-time. Configure architecture, dataset, and hyperparameters,
-              then see the decision boundary form as training progresses.
-            </p>
-            <div class="project-tags">
-              <span>Python</span><span>PyTorch</span><span>Flask</span><span>Plotly</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/SPB-AI-Data-Science-Club/neural-net-visualizer" target="_blank" class="action-btn action-primary">
-                View on GitHub
-              </a>
-              <button class="action-btn action-secondary" onclick="copyClone('neural-net-visualizer')">
-                Copy Clone Command
-              </button>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <span class="project-tag tag-nlp">NLP</span>
-              <span class="project-category">Natural Language Processing</span>
-            </div>
-            <h3 class="project-title">Market Sentiment Analyzer</h3>
-            <p class="project-desc">
-              NLP pipeline that classifies financial news headlines as bullish, bearish, or neutral
-              using a fine-tuned DistilRoBERTa transformer model.
-            </p>
-            <div class="project-tags">
-              <span>Python</span><span>HuggingFace</span><span>Flask</span><span>Transformers</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/SPB-AI-Data-Science-Club/sentiment-analyzer" target="_blank" class="action-btn action-primary">
-                View on GitHub
-              </a>
-              <button class="action-btn action-secondary" onclick="copyClone('sentiment-analyzer')">
-                Copy Clone Command
-              </button>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-header">
-              <span class="project-tag tag-cv">Vision</span>
-              <span class="project-category">Computer Vision</span>
-            </div>
-            <h3 class="project-title">Image Classifier</h3>
-            <p class="project-desc">
-              Upload any image and a ResNet-50 model identifies it from 1,000 ImageNet classes,
-              returning top-5 predictions with confidence scores.
-            </p>
-            <div class="project-tags">
-              <span>Python</span><span>PyTorch</span><span>ResNet-50</span><span>Flask</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/SPB-AI-Data-Science-Club/image-classifier" target="_blank" class="action-btn action-primary">
-                View on GitHub
-              </a>
-              <button class="action-btn action-secondary" onclick="copyClone('image-classifier')">
-                Copy Clone Command
-              </button>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Toast notification -->
-        <div class="toast" id="toast">Clone command copied to clipboard</div>
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        SPB AI &amp; Data<br />
+        <span class="hero-accent">Science Club</span>
+      </h1>
+      <div class="hero-actions">
+        <a href="projects.html" class="btn-primary">View Projects</a>
+        <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub Org
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ABOUT TAB -->
-  <div class="tab-content" id="tab-about">
-    <div class="tab-page">
-      <div class="container">
-        <div class="page-header">
-          <div class="section-tag">Leadership</div>
-          <h2 class="section-title">About</h2>
-        </div>
-
-        <div class="leadership-grid">
-
-          <!-- High School -->
-          <div class="leadership-section">
-            <h3 class="division-title">High School</h3>
-            <div class="positions">
-              <div class="position-card">
-                <div class="position-role">President</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Vice President</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Secretary</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Treasurer</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Technical Lead</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Project Manager</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Outreach Lead</div>
-                <div class="position-name">--</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Middle School -->
-          <div class="leadership-section">
-            <h3 class="division-title">Middle School</h3>
-            <div class="positions">
-              <div class="position-card">
-                <div class="position-role">President</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Vice President</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Secretary</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Treasurer</div>
-                <div class="position-name">--</div>
-              </div>
-              <div class="position-card">
-                <div class="position-role">Project Coordinator</div>
-                <div class="position-name">--</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <span class="footer-logo-mark"></span>
-        SPB AI &amp; Data Science Club
-      </div>
-      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="footer-gh">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-        </svg>
-        github.com/SPB-AI-Data-Science-Club
-      </a>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
