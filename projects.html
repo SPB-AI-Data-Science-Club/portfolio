@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=15" />
+  <link rel="stylesheet" href="css/style.css?v=16" />
   <style>
-  .gpu-status-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #2a2a2a;background:#181818;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:default;white-space:nowrap}
+  .gpu-status-pill{display:inline-flex;align-items:center;justify-content:center;min-width:128px;gap:.45rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #2a2a2a;background:#181818;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:default;white-space:nowrap}
   .gpu-status-pill .gd{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#444}
   .gpu-status-pill .gd.ready{background:#4ade80;box-shadow:0 0 5px #4ade8077;animation:gpuGlow 2s ease-in-out infinite}
   .gpu-status-pill .gd.busy{background:#fbbf24;box-shadow:0 0 5px #fbbf2477;animation:gpuGlow 1s ease-in-out infinite}
@@ -19,7 +19,7 @@
   @keyframes gpuGlow{0%,100%{opacity:1}50%{opacity:.35}}
   .tag-algo{background:rgba(70,90,200,.18);color:#8da2ff;border:1px solid rgba(70,90,200,.3)}
   .tag-gen{background:rgba(160,60,160,.16);color:#d98add;border:1px solid rgba(160,60,160,.3)}
-  .page-intro{font-size:.95rem;color:#999;line-height:1.75;max-width:640px;margin:-0.5rem 0 2.25rem}
+  .page-intro{font-size:1rem;color:#999;line-height:1.75;max-width:640px;margin:-0.5rem 0 2.25rem}
   </style>
 </head>
 <body>
@@ -27,7 +27,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/logo.png" alt="SPB" style="width:50px;height:50px;border-radius:9px;object-fit:contain;display:block;" />
+        <img src="/logo.png" alt="SPB AI and Data Science Club" />
       </a>
       <span class="nav-slider" id="navSlider"></span>
       <div class="nav-pill">
@@ -290,6 +290,17 @@
     document.fonts.ready.then(function() {
       if (active) place(active, true);
     });
+
+
+    // Keep the slider glued to the active tab through any layout shift
+    // (GPU pill text changing width, fonts swapping, window resizes)
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function() { place(active, true); });
+      ro.observe(inner);
+      var pill = document.getElementById('gpuPill');
+      if (pill) ro.observe(pill);
+    }
+    window.addEventListener('resize', function() { place(active, true); });
 
     document.querySelectorAll('.nav-btn[data-nav]').forEach(function(btn) {
       btn.addEventListener('click', function() {
