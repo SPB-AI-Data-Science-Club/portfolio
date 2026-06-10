@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPB AI &amp; Data Science Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="css/style.css?v=12" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/logo.png" alt="SPB" /><span class="nav-logo-text">SPB</span></a>
+      <span class="nav-slider" id="navSlider"></span>
+      <a href="/" class="nav-btn active" data-nav="home">Home</a>
+      <a href="/about" class="nav-btn" data-nav="about">About</a>
+      <a href="/projects" class="nav-btn" data-nav="projects">Projects</a>
+      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-btn nav-github">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://club.spbdatascience.org" class="nav-login">Member Login</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        SPB AI &amp; Data<br />
+        <span class="hero-accent">Science Club</span>
+      </h1>
+      <div class="hero-sub">
+        <span class="hero-sub-year">Est. 2023</span>
+        <span class="hero-sub-sep">&#9679;</span>
+        <span>Stratford Preparatory Blackford</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="home-section">
+    <div class="container">
+      <div class="section-tag">Club Photo</div>
+      <div class="club-photo-placeholder">
+        <span class="placeholder-text">Photo coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="container">
+      <div class="section-tag">Gallery</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-left">SPB AI &amp; Data Science Club</span>
+      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="footer-gh">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        github.com/SPB-AI-Data-Science-Club
+      </a>
+    </div>
+  </footer>
+
+  <script>
+  (function() {
+    var slider = document.getElementById('navSlider');
+    var active = document.querySelector('.nav-btn.active');
+    var inner  = document.querySelector('.nav-inner');
+    if (!slider || !active || !inner) return;
+
+    function place(btn, instant) {
+      var ir = inner.getBoundingClientRect();
+      var br = btn.getBoundingClientRect();
+      if (instant) slider.style.transition = 'none';
+      slider.style.left   = (br.left - ir.left) + 'px';
+      slider.style.top    = (br.top  - ir.top)  + 'px';
+      slider.style.width  = br.width  + 'px';
+      slider.style.height = br.height + 'px';
+    }
+
+    var prev    = sessionStorage.getItem('navFrom');
+    var prevBtn = prev ? document.querySelector('[data-nav="' + prev + '"]') : null;
+
+    if (prevBtn && prevBtn !== active) {
+      place(prevBtn, true);
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        slider.style.transition = 'left .28s cubic-bezier(.4,0,.2,1), width .28s cubic-bezier(.4,0,.2,1)';
+        place(active, false);
+      }); });
+    } else {
+      place(active, true);
+      requestAnimationFrame(function() {
+        slider.style.transition = 'left .28s cubic-bezier(.4,0,.2,1), width .28s cubic-bezier(.4,0,.2,1)';
+      });
+    }
+    sessionStorage.removeItem('navFrom');
+
+    // Re-place after fonts load to fix font-swap misalignment
+    document.fonts.ready.then(function() {
+      if (active) place(active, true);
+    });
+
+    document.querySelectorAll('.nav-btn[data-nav]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (active && active.dataset.nav) sessionStorage.setItem('navFrom', active.dataset.nav);
+        place(btn, false);
+      });
+    });
+  })();
+  </script>
+
+</body>
+</html>

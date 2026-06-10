@@ -6,20 +6,40 @@
   <title>SPB AI &amp; Data Science Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
+  <style id="gpu-status-css">
+  .gpu-status-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #2a2a2a;background:#181818;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:default;white-space:nowrap}
+  .gpu-status-pill .gd{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#444}
+  .gpu-status-pill .gd.ready{background:#4ade80;box-shadow:0 0 5px #4ade8077;animation:gpuGlow 2s ease-in-out infinite}
+  .gpu-status-pill .gd.busy{background:#fbbf24;box-shadow:0 0 5px #fbbf2477;animation:gpuGlow 1s ease-in-out infinite}
+  .gpu-status-pill .gt{color:#555}
+  .gpu-status-pill .gt.ready{color:#4ade80}
+  .gpu-status-pill .gt.busy{color:#fbbf24}
+  @keyframes gpuGlow{0%,100%{opacity:1}50%{opacity:.35}}
+  </style>
 </head>
 <body>
 
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-slider" id="navSlider"></span>
-      <a href="/" class="nav-btn active" data-nav="home">Home</a>
-      <a href="/about" class="nav-btn" data-nav="about">About</a>
-      <a href="/projects" class="nav-btn" data-nav="projects">Projects</a>
-      <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-btn nav-github">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="SPB" style="width:50px;height:50px;border-radius:9px;object-fit:contain;display:block;" />
+        
       </a>
+      <span class="nav-slider" id="navSlider"></span>
+      <div class="nav-pill">
+        <a href="/" class="nav-btn active" data-nav="home">Home</a>
+        <a href="/about" class="nav-btn" data-nav="about">About</a>
+        <a href="/projects" class="nav-btn" data-nav="projects">Projects</a>
+      </div>
+      <div class="nav-right">
+        <div class="gpu-status-pill" id="gpuPill"><div class="gd" id="gpuDot"></div><span class="gt" id="gpuTxt">GPU...</span></div>
+        <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-github" title="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://club.spbdatascience.org" class="nav-login">Member Login</a>
+      </div>
     </div>
   </nav>
 
@@ -33,12 +53,10 @@
         SPB AI &amp; Data<br />
         <span class="hero-accent">Science Club</span>
       </h1>
-      <div class="hero-actions">
-        <a href="/projects" class="btn-primary">View Projects</a>
-        <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub Org
-        </a>
+      <div class="hero-sub">
+        <span class="hero-sub-year">Est. 2023</span>
+        <span class="hero-sub-sep">&#9679;</span>
+        <span>Stratford Preparatory Blackford</span>
       </div>
     </div>
   </div>
@@ -54,14 +72,48 @@
 
   <section class="home-section">
     <div class="container">
-      <div class="section-tag">Gallery</div>
-      <div class="gallery-grid">
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
-        <div class="gallery-item"></div>
+      <div class="stats-band">
+        <div class="stat-cell">
+          <div class="stat-number">9</div>
+          <div class="stat-caption">Live projects deployed on club infrastructure</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">RTX 5080</div>
+          <div class="stat-caption">Dedicated GPU server for member experiments</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">4</div>
+          <div class="stat-caption">Competition circuits: Wharton, Presidential AI, Kaggle, WAICY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="container">
+      <div class="section-tag">What We Build</div>
+      <div class="featured-grid">
+        <a href="https://digits.spbdatascience.org" target="_blank" class="featured-card">
+          <div class="featured-kind">Computer Vision</div>
+          <div class="featured-name">Digit Recognizer</div>
+          <div class="featured-desc">Draw a number and a convolutional network we trained from scratch reads it in real time, with the full probability distribution on screen.</div>
+          <span class="featured-cta">Try it live</span>
+        </a>
+        <a href="https://neural.spbdatascience.org" target="_blank" class="featured-card">
+          <div class="featured-kind">Deep Learning</div>
+          <div class="featured-name">Neural Net Visualizer</div>
+          <div class="featured-desc">Design a network architecture and watch it learn, with the decision boundary streaming live from a PyTorch training loop.</div>
+          <span class="featured-cta">Try it live</span>
+        </a>
+        <a href="https://sentiment.spbdatascience.org" target="_blank" class="featured-card">
+          <div class="featured-kind">NLP + Finance</div>
+          <div class="featured-name">Market Sentiment Analyzer</div>
+          <div class="featured-desc">Live stock charts paired with transformer-scored news sentiment for any ticker on the market.</div>
+          <span class="featured-cta">Try it live</span>
+        </a>
+      </div>
+      <div class="featured-more">
+        <a href="/projects" class="featured-more-link">See all nine projects</a>
       </div>
     </div>
   </section>
@@ -110,6 +162,11 @@
     }
     sessionStorage.removeItem('navFrom');
 
+    // Re-place after fonts load to fix font-swap misalignment
+    document.fonts.ready.then(function() {
+      if (active) place(active, true);
+    });
+
     document.querySelectorAll('.nav-btn[data-nav]').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (active && active.dataset.nav) sessionStorage.setItem('navFrom', active.dataset.nav);
@@ -119,5 +176,24 @@
   })();
   </script>
 
+<script id="gpu-status-js">
+(function(){
+  function upd(){
+    fetch('https://spbdatascience.org/api/gpu-status')
+      .then(function(r){return r.json();})
+      .then(function(d){
+        var s=d.status||'offline';
+        var dot=document.getElementById('gpuDot');
+        var txt=document.getElementById('gpuTxt');
+        dot.className='gd '+(s==='ready'||s==='busy'?s:'');
+        txt.className='gt '+(s==='ready'||s==='busy'?s:'');
+        txt.textContent=s==='ready'?'RTX 5080 Ready':s==='busy'?'GPU Busy':'GPU Offline';
+      }).catch(function(){
+        document.getElementById('gpuTxt').textContent='GPU Offline';
+      });
+  }
+  upd();setInterval(upd,20000);
+})();
+</script>
 </body>
 </html>

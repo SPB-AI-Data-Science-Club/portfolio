@@ -1,49 +1,16 @@
-# Club Portfolio Website
+# SPB AI & Data Science Club - Website
 
-Static HTML/CSS/JS site — the public face of SPB AI & Data Science Club.
+The club's public site: [spbdatascience.org](https://spbdatascience.org)
 
-## Local Preview
+Static HTML/CSS/JS, served by nginx. Three pages (home, about, projects) plus a live GPU status indicator showing whether the club's RTX 5080 compute server is online.
 
-```bash
-# Python built-in server
-python3 -m http.server 8080
-# → http://localhost:8080
+## Structure
+
+```
+index.html      home: hero, club stats, featured projects
+about.html      what the club does, competitions, resources
+projects.html   all nine live projects with source links
+css/style.css   single stylesheet, dark theme
 ```
 
-## Deploying to Vultr VPS
-
-### First-time server setup
-
-```bash
-# 1. Upload setup files to VPS
-scp setup-vps.sh nginx.conf root@YOUR_VPS_IP:~/
-
-# 2. SSH in and run setup
-ssh root@YOUR_VPS_IP "bash setup-vps.sh"
-```
-
-### Deploying updates
-
-```bash
-# Edit deploy.sh to set your VPS_IP, then:
-bash deploy.sh
-```
-
-This rsyncs all portfolio files to `/var/www/spb-club/portfolio/` on the VPS.
-
-## Adding a New Project
-
-Edit `index.html` — copy an existing `<article class="project-card">` block and update:
-- Title, description, icon
-- Tech stack tags
-- GitHub link
-- Status badge (`status-live` or `status-dev`)
-
-## SSL / HTTPS (requires a domain)
-
-```bash
-ssh root@YOUR_VPS_IP
-certbot --nginx -d yourdomain.com
-```
-
-Then uncomment the HTTPS block in `nginx.conf`.
+All nine project demos are deployed as subdomains and linked from the projects page; each has its own repository in this organization.
