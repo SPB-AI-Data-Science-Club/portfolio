@@ -635,3 +635,25 @@ a { color: inherit; text-decoration: none; }
   .hero-title { font-size: clamp(2rem, 12vw, 2.8rem); }
 }
 
+
+/* ── Mobile nav: stack rows, never overflow ── */
+@media (max-width: 720px) {
+  .nav { position: static; }
+  .nav-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+    padding: .9rem 1rem;
+  }
+  .nav-logo { order: 1; width: 100%; justify-content: center; }
+  .nav-logo img { width: 84px; height: 84px; }
+  .nav-pill { order: 2; }
+  .nav-right { order: 3; width: 100%; justify-content: center; display: flex; gap: .6rem; }
+  .nav-github { display: none; }
+  .page-wrap { padding: 2rem 1.25rem 3.5rem; }
+  .hero { padding-top: 2rem; min-height: 46vh; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card { padding: 1.4rem 1.5rem; }
+  .section-title { font-size: 1.5rem; }
+  .footer-inner { flex-direction: column; gap: .6rem; text-align: center; }
+}

@@ -2,7 +2,7 @@
 
 The club's public site: [spbdatascience.org](https://spbdatascience.org)
 
-Static HTML/CSS/JS, served by nginx. Three pages (home, about, projects) plus a live GPU status indicator showing whether the club's RTX 5080 compute server is online.
+Static HTML/CSS/JS, served by nginx. Three pages (home, about, projects) plus a live GPU status indicator showing whether the club's GPU servers is online.
 
 ## Structure
 
