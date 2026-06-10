@@ -86,14 +86,7 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
 }
 
-.nav-slider {
-  position: absolute;
-  background: var(--burgundy);
-  border-radius: 100px;
-  pointer-events: none;
-  z-index: 0;
-  transition: left .28s cubic-bezier(.4,0,.2,1), width .28s cubic-bezier(.4,0,.2,1);
-}
+.nav-slider { display: none; }
 
 .nav-btn {
   position: relative;
@@ -109,8 +102,9 @@ a { color: inherit; text-decoration: none; }
   transition: color .15s;
   white-space: nowrap;
 }
+.nav-btn { transition: color .2s, background .2s; }
 .nav-btn:hover { color: rgba(255,255,255,.8); }
-.nav-btn.active { color: #fff; }
+.nav-btn.active { color: #fff; background: var(--burgundy); }
 
 /* Right: github icon + login */
 .nav-right {
