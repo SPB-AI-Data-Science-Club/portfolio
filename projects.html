@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=20" />
+  <link rel="stylesheet" href="css/style.css?v=21" />
   <style>
   .gpu-status-pill{display:inline-flex;align-items:center;justify-content:center;min-width:128px;gap:.45rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #2a2a2a;background:#181818;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:default;white-space:nowrap}
   .gpu-status-pill .gd{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#444}
@@ -19,7 +19,13 @@
   @keyframes gpuGlow{0%,100%{opacity:1}50%{opacity:.35}}
   .tag-algo{background:rgba(70,90,200,.18);color:#8da2ff;border:1px solid rgba(70,90,200,.3)}
   .tag-gen{background:rgba(160,60,160,.16);color:#d98add;border:1px solid rgba(160,60,160,.3)}
-  .page-intro{font-size:1rem;color:#999;line-height:1.75;max-width:640px;margin:-0.5rem 0 2.25rem}
+  .page-intro{font-size:1rem;color:#999;line-height:1.75;max-width:640px;margin:-0.5rem 0 1.5rem}
+  .demo-banner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:linear-gradient(110deg,rgba(102,0,51,.22),rgba(20,20,20,.9) 60%);border:1px solid rgba(139,0,68,.45);border-radius:14px;padding:1.3rem 1.75rem;margin-bottom:2.25rem;text-decoration:none;transition:border-color .2s,transform .15s}
+  .demo-banner:hover{border-color:rgba(196,0,106,.6);transform:translateY(-2px)}
+  .demo-banner-title{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:.25rem}
+  .demo-banner-sub{font-size:.88rem;color:#999;line-height:1.6}
+  .demo-banner-btn{flex-shrink:0;padding:.7rem 1.7rem;background:#660033;color:#fff;border-radius:999px;font-size:.92rem;font-weight:700}
+  @media(max-width:720px){.demo-banner{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
 <body>
@@ -33,7 +39,6 @@
         <a href="/" class="nav-btn" data-nav="home">Home</a>
         <a href="/about" class="nav-btn" data-nav="about">About</a>
         <a href="/projects" class="nav-btn active" data-nav="projects">Projects</a>
-        <a href="https://demo.spbdatascience.org" class="nav-btn" data-nav="demos">Demos</a>
       </div>
       <div class="nav-right">
         <div class="gpu-status-pill" id="gpuPill"><div class="gd" id="gpuDot"></div><span class="gt" id="gpuTxt">GPU...</span></div>
@@ -51,11 +56,18 @@
         <h2 class="section-title">Projects</h2>
       </div>
       <p class="page-intro">
-        Nine live applications built by club members, covering computer vision, natural language processing,
-        classical algorithms, and generative models. Every project is deployed on club infrastructure
-        and open source. GPU-backed demos run on the club's servers; the status pill above shows
-        whether it is online.
+        Applications built by club members and deployed on club servers, covering computer vision,
+        natural language processing, classical algorithms, and generative models. Each project links
+        to its source code.
       </p>
+
+      <a class="demo-banner" href="https://demo.spbdatascience.org">
+        <div>
+          <div class="demo-banner-title">Live Demo Showcase</div>
+          <div class="demo-banner-sub">All nine projects in a full-screen presentation with embedded live previews, intended for fairs and meetings.</div>
+        </div>
+        <span class="demo-banner-btn">Launch</span>
+      </a>
 
       <div class="projects-grid">
 
@@ -66,9 +78,9 @@
           </div>
           <h3 class="project-title">Neural Net Visualizer</h3>
           <p class="project-desc">
-            Build a network layer by layer, pick a dataset and optimizer, and watch the decision
-            boundary form live. Training metrics stream over server-sent events while PyTorch
-            fits the model on the server.
+            Configure a network architecture, dataset, and optimizer, then follow the decision
+            boundary and training metrics as they stream from a PyTorch training loop on the
+            server.
           </p>
           <div class="project-tags">
             <span>PyTorch</span><span>SSE Streaming</span><span>Plotly</span><span>Flask</span>
@@ -86,9 +98,9 @@
           </div>
           <h3 class="project-title">Digit Recognizer</h3>
           <p class="project-desc">
-            Draw a digit and a convolutional network we trained on MNIST classifies it live,
-            showing the full probability distribution. Strokes are normalized exactly like the
-            original dataset: cropped, scaled, and centered by pixel mass. 98.6% test accuracy.
+            A convolutional network trained on MNIST classifies handwritten digits as they are
+            drawn and displays the full probability distribution. Strokes are normalized with
+            the same procedure used to build the dataset. Test accuracy is 98.6 percent.
           </p>
           <div class="project-tags">
             <span>PyTorch</span><span>CNN</span><span>Canvas API</span><span>MNIST</span>
@@ -106,9 +118,9 @@
           </div>
           <h3 class="project-title">Pathfinding Visualizer</h3>
           <p class="project-desc">
-            A*, Dijkstra, Greedy Best-First, BFS, and DFS animated on an interactive grid.
-            Draw walls and weighted terrain, generate mazes by recursive division, and compare
-            visit counts, path costs, and optimality guarantees between algorithms.
+            A*, Dijkstra, Greedy Best-First, BFS, and DFS animated on an editable grid with
+            walls, weighted terrain, and generated mazes. Each run reports nodes visited, path
+            cost, and whether the algorithm guarantees a shortest path.
           </p>
           <div class="project-tags">
             <span>JavaScript</span><span>A* Search</span><span>Binary Heap</span><span>Maze Generation</span>
@@ -126,9 +138,9 @@
           </div>
           <h3 class="project-title">Language Model Playground</h3>
           <p class="project-desc">
-            A character-level n-gram model that learns the voice of Shakespeare, Sherlock Holmes,
-            or Grimms' fairy tales. Context length and temperature sliders make the core tradeoffs
-            of every language model, including GPT, tangible in seconds.
+            A character-level n-gram model built from classic texts or any pasted sample.
+            Context length and temperature sliders control coherence and variety, the same
+            parameters used in modern language models.
           </p>
           <div class="project-tags">
             <span>Python</span><span>N-gram Models</span><span>Temperature Sampling</span>
@@ -146,9 +158,9 @@
           </div>
           <h3 class="project-title">Chess Bot</h3>
           <p class="project-desc">
-            Play against Stockfish 16 at calibrated strength from 1320 to 2500 ELO. Drag-and-drop
-            board, algebraic move history, full-strength hint engine, and play-as-black support,
-            all driven by a python-chess backend.
+            Play Stockfish 16 at adjustable strength from 100 to 3600 ELO with a live evaluation
+            bar, captured piece display, algebraic move history, and a hint engine, driven by a
+            python-chess backend.
           </p>
           <div class="project-tags">
             <span>Python</span><span>Stockfish 16</span><span>UCI Protocol</span><span>chess.js</span>
@@ -166,9 +178,9 @@
           </div>
           <h3 class="project-title">Market Sentiment Analyzer</h3>
           <p class="project-desc">
-            Live 30-day price charts and company stats for any ticker, with recent headlines scored
-            bullish, bearish, or neutral by a DistilRoBERTa transformer fine-tuned on financial news.
-            Aggregate sentiment is summarized per stock.
+            Candlestick charts, volume, and company statistics for any ticker over selectable
+            periods, with recent headlines classified by a DistilRoBERTa transformer fine-tuned
+            on financial news and aggregated per stock.
           </p>
           <div class="project-tags">
             <span>Transformers</span><span>DistilRoBERTa</span><span>yfinance</span><span>Plotly</span>
@@ -186,9 +198,9 @@
           </div>
           <h3 class="project-title">Image Classifier</h3>
           <p class="project-desc">
-            Classify any image with ResNet-50, EfficientNet-B0, or MobileNet-V3 pretrained on
-            ImageNet. Runs on the club GPU when available and falls back to CPU inference
-            automatically, so the demo never goes dark.
+            Classifies images with ResNet-50, EfficientNet-B0, or MobileNet-V3 pretrained on
+            ImageNet. Inference runs on the club GPU when available and falls back to CPU
+            automatically.
           </p>
           <div class="project-tags">
             <span>PyTorch</span><span>ResNet-50</span><span>ImageNet</span><span>GPU/CPU Failover</span>
@@ -206,9 +218,9 @@
           </div>
           <h3 class="project-title">Image Animator</h3>
           <p class="project-desc">
-            Brings still images to life with motion synthesis on the club's GPUs.
-            Built deliberately as a media-literacy project: a mandatory ethics gate, consent rules
-            for real people, watermarked output, and a guide to spotting synthetic video.
+            Generates a short video clip from a still image and a written prompt using a video
+            diffusion model. Includes an ethics agreement, consent rules for images of real
+            people, and a guide to recognizing synthetic video.
           </p>
           <div class="project-tags">
             <span>Motion Models</span><span>Club GPUs</span><span>AI Ethics</span>
@@ -226,9 +238,9 @@
           </div>
           <h3 class="project-title">Art Style Transfer</h3>
           <p class="project-desc">
-            Six handcrafted artistic filters: pencil sketch, watercolor, oil painting, neon glow,
-            mosaic, and vintage film, each composed from classical image-processing operations
-            rather than a black-box model. Instant processing and download.
+            Restyles photos with an image-to-image diffusion model driven by a written prompt,
+            with adjustable strength. Six filters built from classical image-processing
+            operations are available as a separate mode.
           </p>
           <div class="project-tags">
             <span>PIL</span><span>NumPy</span><span>Convolution Kernels</span>
