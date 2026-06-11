@@ -497,16 +497,18 @@ a { color: inherit; text-decoration: none; }
   color: #aabfe4;
   max-width: 56ch;
 }
+.demo-banner { border: 1px solid var(--rule-strong); }
 .demo-banner-btn {
   flex-shrink: 0;
-  padding: .7rem 1.7rem;
-  border: 1px solid rgba(255,255,255,.45);
+  padding: .8rem 2rem;
+  background: var(--blue);
   color: #fff;
-  border-radius: 6px;
-  font-size: .92rem;
-  font-weight: 600;
+  border-radius: 8px;
+  font-size: .95rem;
+  font-weight: 700;
+  transition: background .15s;
 }
-.demo-banner:hover .demo-banner-btn { border-color: #fff; }
+.demo-banner:hover .demo-banner-btn { background: var(--blue-bright); }
 
 /* ── Project catalog ── */
 .project-list { border-top: 1px solid var(--rule); }
@@ -734,4 +736,30 @@ a { color: inherit; text-decoration: none; }
   .nav-login { padding: .45rem .9rem; font-size: .82rem; }
   .gallery-grid { grid-template-columns: 1fr; }
   .photo-placeholder { height: 200px; }
+}
+
+
+/* Compact photo strip shown until real photos exist */
+.photo-strip {
+  border: 1px dashed var(--rule-strong);
+  border-radius: 12px;
+  background: var(--paper-deep);
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scroll reveal: a quiet rise, nothing theatrical */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

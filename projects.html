@@ -7,8 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Nine live applications built by club members: computer vision, language models, generative AI, and classic algorithms, all running on club servers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SPB AI &amp; Data Science Club" />
+  <meta property="og:title" content="Projects - SPB AI & Data Science Club" />
+  <meta property="og:description" content="Nine live applications built by club members: computer vision, language models, generative AI, and classic algorithms, all running on club servers." />
+  <meta property="og:url" content="https://spbdatascience.org/projects" />
+  <meta property="og:image" content="https://spbdatascience.org/logo.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=27" />
+  <link rel="stylesheet" href="css/style.css?v=28" />
 </head>
 <body>
 
@@ -252,5 +260,19 @@
     upd();setInterval(upd,20000);
   })();
   </script>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var targets = document.querySelectorAll('.section, .project-row, .demo-banner, .roster-row, .photo-feature');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.12});
+  targets.forEach(function(t){ t.classList.add('reveal'); io.observe(t); });
+})();
+</script>
 </body>
 </html>
