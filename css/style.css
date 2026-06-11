@@ -201,8 +201,79 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Hero ── */
 .hero {
+  position: relative;
+  overflow: hidden;
   padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(3.5rem, 7vw, 5.5rem);
   border-bottom: 4px double var(--rule-strong);
+}
+.hero .container { position: relative; z-index: 1; }
+
+.hero-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.blob {
+  position: absolute;
+  filter: blur(64px);
+  will-change: transform, border-radius;
+}
+.blob-1 {
+  width: 580px; height: 470px;
+  top: -140px; left: -120px;
+  opacity: .6;
+  background: linear-gradient(130deg, #c7daf6, #a8c4ef 70%);
+  border-radius: 58% 42% 64% 36% / 46% 62% 38% 54%;
+  animation: blobMorph 14s ease-in-out infinite alternate,
+             blobDrift1 23s ease-in-out infinite alternate;
+}
+.blob-2 {
+  width: 640px; height: 520px;
+  top: -60px; right: -180px;
+  opacity: .5;
+  background: linear-gradient(220deg, #d6e4f9, #b3cdf3 65%);
+  border-radius: 38% 62% 46% 54% / 60% 38% 62% 40%;
+  animation: blobMorph 18s ease-in-out infinite alternate-reverse,
+             blobDrift2 29s ease-in-out infinite alternate;
+}
+.blob-3 {
+  width: 420px; height: 360px;
+  bottom: -160px; left: 38%;
+  opacity: .42;
+  background: linear-gradient(40deg, #9fc0ef, #c2d6f5 75%);
+  border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%;
+  animation: blobMorph 16s ease-in-out infinite alternate,
+             blobDrift3 26s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blobMorph {
+  0%   { border-radius: 58% 42% 64% 36% / 46% 62% 38% 54%; }
+  35%  { border-radius: 42% 58% 48% 52% / 58% 40% 60% 42%; }
+  70%  { border-radius: 64% 36% 40% 60% / 38% 58% 42% 62%; }
+  100% { border-radius: 46% 54% 60% 40% / 56% 44% 58% 42%; }
+}
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) rotate(0deg) scale(1); }
+  to   { transform: translate(70px, 40px) rotate(9deg) scale(1.08); }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) rotate(0deg) scale(1); }
+  to   { transform: translate(-80px, 50px) rotate(-7deg) scale(1.12); }
+}
+@keyframes blobDrift3 {
+  from { transform: translate(0, 0) rotate(0deg) scale(1.05); }
+  to   { transform: translate(60px, -45px) rotate(6deg) scale(.95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .blob { filter: blur(48px); }
+  .blob-1 { width: 380px; height: 320px; top: -100px; left: -110px; }
+  .blob-2 { width: 420px; height: 360px; right: -160px; }
+  .blob-3 { width: 300px; height: 260px; bottom: -120px; }
 }
 
 .hero .kicker { margin-bottom: 1.4rem; }
