@@ -10,7 +10,7 @@ Static HTML/CSS/JS, served by nginx. Three pages (home, about, projects) plus a 
 index.html      home: hero, club stats, featured projects
 about.html      what the club does, competitions, resources
 projects.html   all nine live projects with source links
-css/style.css   single stylesheet, editorial light theme in oxford blue
+css/style.css   single stylesheet, dark editorial theme in blue
 ```
 
 All nine project demos are deployed as subdomains and linked from the projects page; each has its own repository in this organization.

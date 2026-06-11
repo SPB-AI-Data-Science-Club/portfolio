@@ -1,29 +1,31 @@
 /* ─────────────────────────────────────────────────────────────
-   SPB AI & Data Science Club — editorial blue theme
-   Fraunces (display) + Public Sans (text) on paper-blue ground
+   SPB AI & Data Science Club — dark editorial blue theme
+   Schibsted Grotesk (display) + Public Sans (text) on deep navy
    ───────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --paper:       #f5f6f9;   /* cool off-white ground */
-  --paper-deep:  #eceff5;   /* washed section panels */
-  --card:        #fbfcfe;
+  color-scheme: dark;
 
-  --ink:         #14233c;   /* blue-black text */
-  --ink-soft:    #3e5071;
-  --ink-faint:   #7585a0;
+  --paper:       #0c1322;   /* deep navy ground */
+  --paper-deep:  #101a2e;   /* raised section panels */
+  --card:        #141f36;
 
-  --blue:        #1c4d9e;   /* primary brand */
-  --blue-deep:   #122f63;   /* dark panels, headings */
-  --blue-bright: #2d66c9;   /* hover / links */
-  --blue-wash:   #e7edf8;   /* tinted fills */
+  --ink:         #e9eef8;   /* near-white text */
+  --ink-soft:    #b4c1d8;
+  --ink-faint:   #6e7f9d;
 
-  --rule:        #d8dde7;   /* hairlines */
-  --rule-strong: #b6c1d4;
+  --blue:        #3f74d4;   /* primary brand */
+  --blue-deep:   #16294e;   /* dark panels */
+  --blue-bright: #6494e8;   /* hover / links */
+  --blue-wash:   #1a2a4a;   /* tinted fills */
 
-  --ok:          #1e7e45;
-  --warn:        #a16207;
+  --rule:        #22304d;   /* hairlines */
+  --rule-strong: #38486e;
+
+  --ok:          #3ecb78;
+  --warn:        #e3ab47;
 
   --font-display: 'Schibsted Grotesk', 'Helvetica Neue', sans-serif;
   --font-text:    'Public Sans', 'Helvetica Neue', sans-serif;
@@ -210,8 +212,7 @@ a { color: inherit; text-decoration: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(3.5rem, 7vw, 5.5rem);
-  border-bottom: 4px double var(--rule-strong);
+  padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6.5rem);
 }
 .hero .container { position: relative; z-index: 1; }
 
@@ -232,8 +233,8 @@ a { color: inherit; text-decoration: none; }
 .blob-1 {
   width: 580px; height: 470px;
   top: -140px; left: -120px;
-  opacity: .6;
-  background: linear-gradient(130deg, #c7daf6, #a8c4ef 70%);
+  opacity: .55;
+  background: linear-gradient(130deg, #1e3c72, #152a51 70%);
   border-radius: 58% 42% 64% 36% / 46% 62% 38% 54%;
   animation: blobMorph 14s ease-in-out infinite alternate,
              blobDrift1 23s ease-in-out infinite alternate;
@@ -241,8 +242,8 @@ a { color: inherit; text-decoration: none; }
 .blob-2 {
   width: 640px; height: 520px;
   top: -60px; right: -180px;
-  opacity: .5;
-  background: linear-gradient(220deg, #d6e4f9, #b3cdf3 65%);
+  opacity: .6;
+  background: linear-gradient(220deg, #1a3260, #101d39 65%);
   border-radius: 38% 62% 46% 54% / 60% 38% 62% 40%;
   animation: blobMorph 18s ease-in-out infinite alternate-reverse,
              blobDrift2 29s ease-in-out infinite alternate;
@@ -250,8 +251,8 @@ a { color: inherit; text-decoration: none; }
 .blob-3 {
   width: 420px; height: 360px;
   bottom: -160px; left: 38%;
-  opacity: .42;
-  background: linear-gradient(40deg, #9fc0ef, #c2d6f5 75%);
+  opacity: .45;
+  background: linear-gradient(40deg, #2a55a0, #1b3868 75%);
   border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%;
   animation: blobMorph 16s ease-in-out infinite alternate,
              blobDrift3 26s ease-in-out infinite alternate-reverse;
@@ -347,9 +348,9 @@ a { color: inherit; text-decoration: none; }
 .ticker {
   position: relative;
   z-index: 2;
-  width: 104vw;
-  margin: -1.4rem -2vw -0.4rem;
-  transform: rotate(-1.1deg);
+  width: 108vw;
+  margin: -1.2rem -4vw 0;
+  transform: rotate(-2.5deg);
   background: var(--blue-deep);
   color: #e8eefb;
   overflow: hidden;
@@ -481,7 +482,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   transition: background .15s;
 }
-.demo-banner:hover { background: #173a78; }
+.demo-banner:hover { background: #1d345e; }
 .demo-banner-title {
   font-family: var(--font-display);
   font-size: 1.45rem;
@@ -526,7 +527,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 3rem;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1.5px #a9bedd;
+  -webkit-text-stroke: 1.5px #3c5179;
 }
 
 .project-meta {
