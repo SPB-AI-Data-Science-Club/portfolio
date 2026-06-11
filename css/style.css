@@ -358,7 +358,7 @@ a { color: inherit; text-decoration: none; }
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: tickerScroll 36s linear infinite;
+  animation: tickerScroll 180s linear infinite;
 }
 .ticker-group {
   display: flex;
