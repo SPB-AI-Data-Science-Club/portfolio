@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=29" />
+  <link rel="stylesheet" href="css/style.css?v=30" />
 </head>
 <body>
 
@@ -80,9 +80,13 @@
       <div class="section-head">
         <span class="kicker">Photos</span>
       </div>
-      <div class="photo-pair">
-        <img class="photo-img" src="/img/gallery-1.jpg" alt="Club members working during a session" />
-        <img class="photo-img" src="/img/gallery-2.jpg" alt="Club members working during a session" />
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-1.jpg" alt="Club session photo" /></div>
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-2.jpg" alt="Club session photo" /></div>
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-3.jpg" alt="Club session photo" /></div>
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-4.jpg" alt="Club session photo" /></div>
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-5.jpg" alt="Club session photo" /></div>
+        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-6.jpg" alt="Club session photo" /></div>
       </div>
     </div>
   </section>
@@ -129,6 +133,55 @@
     });
   }, {threshold: 0.12});
   targets.forEach(function(t){ t.classList.add('reveal'); io.observe(t); });
+})();
+</script>
+
+<script>
+(function(){
+  // Gallery carousel: photos start in a random arrangement, then advance
+  // one slot every few seconds with a crossfade.
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .gallery-img'));
+  if (!imgs.length) return;
+  var photos = [1, 2, 3, 4, 5, 6].map(function(n){ return '/img/gallery-' + n + '.jpg'; });
+
+  // Fisher-Yates shuffle for a fresh order on every visit
+  for (var i = photos.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = photos[i]; photos[i] = photos[j]; photos[j] = tmp;
+  }
+  var offset = 0;
+  function assign() {
+    imgs.forEach(function(img, k){ img.src = photos[(k + offset) % photos.length]; });
+  }
+  assign();
+
+  // Preload all six so the cycle never flashes empty frames
+  photos.forEach(function(src){ var p = new Image(); p.src = src; });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Cycle only while the tab is visible; background tabs throttle timers,
+  // which could otherwise strand the gallery mid-fade at opacity zero.
+  var fading = false;
+  setInterval(function(){
+    if (document.hidden || fading) return;
+    fading = true;
+    imgs.forEach(function(img){ img.style.opacity = '0'; });
+    setTimeout(function(){
+      offset = (offset + 1) % photos.length;
+      assign();
+      imgs.forEach(function(img){ img.style.opacity = '1'; });
+      fading = false;
+    }, 460);
+  }, 6000);
+
+  // Returning to the tab always lands on a fully visible gallery
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) {
+      imgs.forEach(function(img){ img.style.opacity = '1'; });
+      fading = false;
+    }
+  });
 })();
 </script>
 </body>
