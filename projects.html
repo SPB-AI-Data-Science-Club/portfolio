@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=29" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
 </head>
 <body>
 
@@ -30,6 +30,7 @@
         <a href="/" data-nav="home">Home</a>
         <a href="/about" data-nav="about">About</a>
         <a href="/projects" class="active" data-nav="projects">Projects</a>
+        <a href="https://demo.spbdatascience.org" data-nav="demos">Demos</a>
       </nav>
       <div class="masthead-right">
         <div class="gpu-status-pill" id="gpuPill"><div class="gd" id="gpuDot"></div><span class="gt" id="gpuTxt">GPU...</span></div>
@@ -67,24 +68,6 @@
         <article class="project-row">
           <div class="project-no">01</div>
           <div class="project-main">
-            <div class="project-meta">Machine Learning<span class="psep">&middot;</span><span class="pcat">Deep Learning</span></div>
-            <h3 class="project-title">Neural Net Visualizer</h3>
-            <p class="project-desc">
-              Configure a network architecture, dataset, and optimizer, then follow the decision
-              boundary and training metrics as they stream from a PyTorch training loop on the
-              server.
-            </p>
-            <p class="project-stack">PyTorch &middot; SSE Streaming &middot; Plotly &middot; Flask</p>
-          </div>
-          <div class="project-links">
-            <a href="https://neural.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/neural-net-visualizer" target="_blank" class="btn-text">Source &#8599;</a>
-          </div>
-        </article>
-
-        <article class="project-row">
-          <div class="project-no">02</div>
-          <div class="project-main">
             <div class="project-meta">Computer Vision<span class="psep">&middot;</span><span class="pcat">Convolutional Networks</span></div>
             <h3 class="project-title">Digit Recognizer</h3>
             <p class="project-desc">
@@ -99,7 +82,23 @@
             <a href="https://github.com/SPB-AI-Data-Science-Club/digit-recognizer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
-
+        <article class="project-row">
+          <div class="project-no">02</div>
+          <div class="project-main">
+            <div class="project-meta">Game AI<span class="psep">&middot;</span><span class="pcat">Adversarial Search</span></div>
+            <h3 class="project-title">Chess Bot</h3>
+            <p class="project-desc">
+              Play Stockfish 16 at adjustable strength from 100 to 3600 ELO with a live evaluation
+              bar, captured piece display, algebraic move history, and a hint engine, driven by a
+              python-chess backend.
+            </p>
+            <p class="project-stack">Python &middot; Stockfish 16 &middot; UCI Protocol &middot; chess.js</p>
+          </div>
+          <div class="project-links">
+            <a href="https://chess.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/chess-bot" target="_blank" class="btn-text">Source &#8599;</a>
+          </div>
+        </article>
         <article class="project-row">
           <div class="project-no">03</div>
           <div class="project-main">
@@ -117,45 +116,8 @@
             <a href="https://github.com/SPB-AI-Data-Science-Club/pathfinding-visualizer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
-
         <article class="project-row">
           <div class="project-no">04</div>
-          <div class="project-main">
-            <div class="project-meta">Natural Language<span class="psep">&middot;</span><span class="pcat">Language Modeling</span></div>
-            <h3 class="project-title">Language Model Playground</h3>
-            <p class="project-desc">
-              A character-level n-gram model built from classic texts or any pasted sample.
-              Context length and temperature sliders control coherence and variety, the same
-              parameters used in modern language models.
-            </p>
-            <p class="project-stack">Python &middot; N-gram Models &middot; Temperature Sampling</p>
-          </div>
-          <div class="project-links">
-            <a href="https://textgen.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/text-generator" target="_blank" class="btn-text">Source &#8599;</a>
-          </div>
-        </article>
-
-        <article class="project-row">
-          <div class="project-no">05</div>
-          <div class="project-main">
-            <div class="project-meta">Game AI<span class="psep">&middot;</span><span class="pcat">Adversarial Search</span></div>
-            <h3 class="project-title">Chess Bot</h3>
-            <p class="project-desc">
-              Play Stockfish 16 at adjustable strength from 100 to 3600 ELO with a live evaluation
-              bar, captured piece display, algebraic move history, and a hint engine, driven by a
-              python-chess backend.
-            </p>
-            <p class="project-stack">Python &middot; Stockfish 16 &middot; UCI Protocol &middot; chess.js</p>
-          </div>
-          <div class="project-links">
-            <a href="https://chess.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/chess-bot" target="_blank" class="btn-text">Source &#8599;</a>
-          </div>
-        </article>
-
-        <article class="project-row">
-          <div class="project-no">06</div>
           <div class="project-main">
             <div class="project-meta">Natural Language<span class="psep">&middot;</span><span class="pcat">Transformers + Market Data</span></div>
             <h3 class="project-title">Market Sentiment Analyzer</h3>
@@ -171,9 +133,8 @@
             <a href="https://github.com/SPB-AI-Data-Science-Club/sentiment-analyzer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
-
         <article class="project-row">
-          <div class="project-no">07</div>
+          <div class="project-no">05</div>
           <div class="project-main">
             <div class="project-meta">Computer Vision<span class="psep">&middot;</span><span class="pcat">Transfer Learning</span></div>
             <h3 class="project-title">Image Classifier</h3>
@@ -189,9 +150,8 @@
             <a href="https://github.com/SPB-AI-Data-Science-Club/image-classifier" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
-
         <article class="project-row">
-          <div class="project-no">08</div>
+          <div class="project-no">06</div>
           <div class="project-main">
             <div class="project-meta">Generative<span class="psep">&middot;</span><span class="pcat">Motion Synthesis</span></div>
             <h3 class="project-title">Image Animator</h3>
@@ -207,9 +167,8 @@
             <a href="https://github.com/SPB-AI-Data-Science-Club/image-animator" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
-
         <article class="project-row">
-          <div class="project-no">09</div>
+          <div class="project-no">07</div>
           <div class="project-main">
             <div class="project-meta">Generative<span class="psep">&middot;</span><span class="pcat">Image Processing</span></div>
             <h3 class="project-title">Art Style Transfer</h3>
@@ -223,6 +182,40 @@
           <div class="project-links">
             <a href="https://style.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
             <a href="https://github.com/SPB-AI-Data-Science-Club/style-transfer" target="_blank" class="btn-text">Source &#8599;</a>
+          </div>
+        </article>
+        <article class="project-row">
+          <div class="project-no">08</div>
+          <div class="project-main">
+            <div class="project-meta">Machine Learning<span class="psep">&middot;</span><span class="pcat">Deep Learning</span></div>
+            <h3 class="project-title">Neural Net Visualizer</h3>
+            <p class="project-desc">
+              Configure a network architecture, dataset, and optimizer, then follow the decision
+              boundary and training metrics as they stream from a PyTorch training loop on the
+              server.
+            </p>
+            <p class="project-stack">PyTorch &middot; SSE Streaming &middot; Plotly &middot; Flask</p>
+          </div>
+          <div class="project-links">
+            <a href="https://neural.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/neural-net-visualizer" target="_blank" class="btn-text">Source &#8599;</a>
+          </div>
+        </article>
+        <article class="project-row">
+          <div class="project-no">09</div>
+          <div class="project-main">
+            <div class="project-meta">Natural Language<span class="psep">&middot;</span><span class="pcat">Language Modeling</span></div>
+            <h3 class="project-title">Language Model Playground</h3>
+            <p class="project-desc">
+              A character-level n-gram model built from classic texts or any pasted sample.
+              Context length and temperature sliders control coherence and variety, the same
+              parameters used in modern language models.
+            </p>
+            <p class="project-stack">Python &middot; N-gram Models &middot; Temperature Sampling</p>
+          </div>
+          <div class="project-links">
+            <a href="https://textgen.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/text-generator" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 

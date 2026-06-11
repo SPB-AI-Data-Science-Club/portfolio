@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=30" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
 </head>
 <body>
 
@@ -30,6 +30,7 @@
         <a href="/" class="active" data-nav="home">Home</a>
         <a href="/about" data-nav="about">About</a>
         <a href="/projects" data-nav="projects">Projects</a>
+        <a href="https://demo.spbdatascience.org" data-nav="demos">Demos</a>
       </nav>
       <div class="masthead-right">
         <div class="gpu-status-pill" id="gpuPill"><div class="gd" id="gpuDot"></div><span class="gt" id="gpuTxt">GPU...</span></div>
@@ -67,10 +68,10 @@
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <div class="ticker-group">
-        <span>Machine Learning</span><i>&#10022;</i><span>PyTorch</span><i>&#10022;</i><span>Kaggle</span><i>&#10022;</i><span>Wharton DS Challenge</span><i>&#10022;</i><span>Computer Vision</span><i>&#10022;</i><span>Club GPU Cluster</span><i>&#10022;</i><span>NLP</span><i>&#10022;</i><span>Presidential AI Challenge</span><i>&#10022;</i><span>WAICY</span><i>&#10022;</i>
+        <span>Kaggle</span><i>&#10022;</i><span>WAICY</span><i>&#10022;</i><span>Wharton High School Data Science Challenge</span><i>&#10022;</i><span>Presidential AI Challenge</span><i>&#10022;</i><span>Hackathons</span><i>&#10022;</i><span>UC Berkeley CALICO Informatics</span><i>&#10022;</i>
       </div>
       <div class="ticker-group">
-        <span>Machine Learning</span><i>&#10022;</i><span>PyTorch</span><i>&#10022;</i><span>Kaggle</span><i>&#10022;</i><span>Wharton DS Challenge</span><i>&#10022;</i><span>Computer Vision</span><i>&#10022;</i><span>Club GPU Cluster</span><i>&#10022;</i><span>NLP</span><i>&#10022;</i><span>Presidential AI Challenge</span><i>&#10022;</i><span>WAICY</span><i>&#10022;</i>
+        <span>Kaggle</span><i>&#10022;</i><span>WAICY</span><i>&#10022;</i><span>Wharton High School Data Science Challenge</span><i>&#10022;</i><span>Presidential AI Challenge</span><i>&#10022;</i><span>Hackathons</span><i>&#10022;</i><span>UC Berkeley CALICO Informatics</span><i>&#10022;</i>
       </div>
     </div>
   </div>
@@ -80,13 +81,8 @@
       <div class="section-head">
         <span class="kicker">Photos</span>
       </div>
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-1.jpg" alt="Club session photo" /></div>
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-2.jpg" alt="Club session photo" /></div>
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-3.jpg" alt="Club session photo" /></div>
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-4.jpg" alt="Club session photo" /></div>
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-5.jpg" alt="Club session photo" /></div>
-        <div class="gallery-item"><img class="gallery-img" src="/img/gallery-6.jpg" alt="Club session photo" /></div>
+      <div class="photo-band" id="photoBand">
+        <div class="photo-band-track" id="photoTrack"></div>
       </div>
     </div>
   </section>
@@ -138,50 +134,24 @@
 
 <script>
 (function(){
-  // Gallery carousel: photos start in a random arrangement, then advance
-  // one slot every few seconds with a crossfade.
-  var imgs = Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .gallery-img'));
-  if (!imgs.length) return;
-  var photos = [1, 2, 3, 4, 5, 6].map(function(n){ return '/img/gallery-' + n + '.jpg'; });
-
-  // Fisher-Yates shuffle for a fresh order on every visit
+  // Photo band: shuffled order on every visit, then a steady drift
+  // from left to right. The track is doubled for a seamless loop.
+  var track = document.getElementById('photoTrack');
+  if (!track) return;
+  var photos = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(n){ return '/img/gallery-' + n + '.jpg'; });
   for (var i = photos.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var tmp = photos[i]; photos[i] = photos[j]; photos[j] = tmp;
   }
-  var offset = 0;
-  function assign() {
-    imgs.forEach(function(img, k){ img.src = photos[(k + offset) % photos.length]; });
+  for (var pass = 0; pass < 2; pass++) {
+    photos.forEach(function(src){
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Club session photo';
+      img.loading = 'eager';
+      track.appendChild(img);
+    });
   }
-  assign();
-
-  // Preload all six so the cycle never flashes empty frames
-  photos.forEach(function(src){ var p = new Image(); p.src = src; });
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  // Cycle only while the tab is visible; background tabs throttle timers,
-  // which could otherwise strand the gallery mid-fade at opacity zero.
-  var fading = false;
-  setInterval(function(){
-    if (document.hidden || fading) return;
-    fading = true;
-    imgs.forEach(function(img){ img.style.opacity = '0'; });
-    setTimeout(function(){
-      offset = (offset + 1) % photos.length;
-      assign();
-      imgs.forEach(function(img){ img.style.opacity = '1'; });
-      fading = false;
-    }, 460);
-  }, 6000);
-
-  // Returning to the tab always lands on a fully visible gallery
-  document.addEventListener('visibilitychange', function(){
-    if (!document.hidden) {
-      imgs.forEach(function(img){ img.style.opacity = '1'; });
-      fading = false;
-    }
-  });
 })();
 </script>
 </body>
