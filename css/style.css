@@ -444,7 +444,8 @@ a { color: inherit; text-decoration: none; }
 /* Photo band: one straight strip drifting left to right */
 .photo-band {
   overflow: hidden;
-  border-radius: 12px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 .photo-band-track {
   display: flex;
@@ -454,7 +455,7 @@ a { color: inherit; text-decoration: none; }
 }
 .photo-band:hover .photo-band-track { animation-play-state: paused; }
 .photo-band-track img {
-  height: 260px;
+  height: 390px;
   width: auto;
   border-radius: 12px;
   border: 1px solid var(--rule);
@@ -470,7 +471,7 @@ a { color: inherit; text-decoration: none; }
   .photo-band-track { animation: none; }
 }
 @media (max-width: 720px) {
-  .photo-band-track img { height: 170px; }
+  .photo-band-track img { height: 255px; }
 }
 
 
