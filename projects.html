@@ -5,42 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects - SPB AI &amp; Data Science Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=21" />
-  <style>
-  .gpu-status-pill{display:inline-flex;align-items:center;justify-content:center;min-width:128px;gap:.45rem;padding:.28rem .7rem;border-radius:999px;border:1px solid #2a2a2a;background:#181818;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:default;white-space:nowrap}
-  .gpu-status-pill .gd{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:#444}
-  .gpu-status-pill .gd.ready{background:#4ade80;box-shadow:0 0 5px #4ade8077;animation:gpuGlow 2s ease-in-out infinite}
-  .gpu-status-pill .gd.busy{background:#fbbf24;box-shadow:0 0 5px #fbbf2477;animation:gpuGlow 1s ease-in-out infinite}
-  .gpu-status-pill .gt{color:#555}
-  .gpu-status-pill .gt.ready{color:#4ade80}
-  .gpu-status-pill .gt.busy{color:#fbbf24}
-  @keyframes gpuGlow{0%,100%{opacity:1}50%{opacity:.35}}
-  .tag-algo{background:rgba(70,90,200,.18);color:#8da2ff;border:1px solid rgba(70,90,200,.3)}
-  .tag-gen{background:rgba(160,60,160,.16);color:#d98add;border:1px solid rgba(160,60,160,.3)}
-  .page-intro{font-size:1rem;color:#999;line-height:1.75;max-width:640px;margin:-0.5rem 0 1.5rem}
-  .demo-banner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;background:linear-gradient(110deg,rgba(102,0,51,.22),rgba(20,20,20,.9) 60%);border:1px solid rgba(139,0,68,.45);border-radius:14px;padding:1.3rem 1.75rem;margin-bottom:2.25rem;text-decoration:none;transition:border-color .2s,transform .15s}
-  .demo-banner:hover{border-color:rgba(196,0,106,.6);transform:translateY(-2px)}
-  .demo-banner-title{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:.25rem}
-  .demo-banner-sub{font-size:.88rem;color:#999;line-height:1.6}
-  .demo-banner-btn{flex-shrink:0;padding:.7rem 1.7rem;background:#660033;color:#fff;border-radius:999px;font-size:.92rem;font-weight:700}
-  @media(max-width:720px){.demo-banner{flex-direction:column;align-items:flex-start}}
-  </style>
+  <link rel="stylesheet" href="css/style.css?v=22" />
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <img src="/logo.png" alt="SPB AI and Data Science Club" width="150" height="150" />
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="/" class="brand">
+        <img src="/logo.png" alt="SPB AI and Data Science Club" width="44" height="44" />
+        <span class="brand-name">SPB <em>AI &amp; Data Science</em> Club</span>
       </a>
-      <div class="nav-pill">
-        <a href="/" class="nav-btn" data-nav="home">Home</a>
-        <a href="/about" class="nav-btn" data-nav="about">About</a>
-        <a href="/projects" class="nav-btn active" data-nav="projects">Projects</a>
-      </div>
-      <div class="nav-right">
+      <nav class="nav-links">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/about" data-nav="about">About</a>
+        <a href="/projects" class="active" data-nav="projects">Projects</a>
+      </nav>
+      <div class="masthead-right">
         <div class="gpu-status-pill" id="gpuPill"><div class="gd" id="gpuDot"></div><span class="gt" id="gpuTxt">GPU...</span></div>
         <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="nav-github" title="GitHub">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
@@ -48,18 +31,20 @@
         <a href="https://club.spbdatascience.org" class="nav-login">Member Login</a>
       </div>
     </div>
-  </nav>
+  </header>
 
   <div class="page-wrap">
     <div class="container">
+
       <div class="page-header">
-        <h2 class="section-title">Projects</h2>
+        <span class="kicker">Built &amp; Deployed by Members</span>
+        <h1 class="section-title">Projects</h1>
+        <p class="page-intro">
+          Nine applications built by club members and deployed on club servers, covering
+          computer vision, natural language processing, classical algorithms, and
+          generative models. Each one links to its source code.
+        </p>
       </div>
-      <p class="page-intro">
-        Applications built by club members and deployed on club servers, covering computer vision,
-        natural language processing, classical algorithms, and generative models. Each project links
-        to its source code.
-      </p>
 
       <a class="demo-banner" href="https://demo.spbdatascience.org">
         <div>
@@ -69,185 +54,167 @@
         <span class="demo-banner-btn">Launch</span>
       </a>
 
-      <div class="projects-grid">
+      <div class="project-list">
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-ml">ML</span>
-            <span class="project-category">Deep Learning</span>
+        <article class="project-row">
+          <div class="project-no">01</div>
+          <div class="project-main">
+            <div class="project-meta">Machine Learning<span class="psep">&middot;</span><span class="pcat">Deep Learning</span></div>
+            <h3 class="project-title">Neural Net Visualizer</h3>
+            <p class="project-desc">
+              Configure a network architecture, dataset, and optimizer, then follow the decision
+              boundary and training metrics as they stream from a PyTorch training loop on the
+              server.
+            </p>
+            <p class="project-stack">PyTorch &middot; SSE Streaming &middot; Plotly &middot; Flask</p>
           </div>
-          <h3 class="project-title">Neural Net Visualizer</h3>
-          <p class="project-desc">
-            Configure a network architecture, dataset, and optimizer, then follow the decision
-            boundary and training metrics as they stream from a PyTorch training loop on the
-            server.
-          </p>
-          <div class="project-tags">
-            <span>PyTorch</span><span>SSE Streaming</span><span>Plotly</span><span>Flask</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://neural.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/neural-net-visualizer" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://neural.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/neural-net-visualizer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-cv">Vision</span>
-            <span class="project-category">Convolutional Networks</span>
+        <article class="project-row">
+          <div class="project-no">02</div>
+          <div class="project-main">
+            <div class="project-meta">Computer Vision<span class="psep">&middot;</span><span class="pcat">Convolutional Networks</span></div>
+            <h3 class="project-title">Digit Recognizer</h3>
+            <p class="project-desc">
+              A convolutional network trained on MNIST classifies handwritten digits as they are
+              drawn and displays the full probability distribution. Strokes are normalized with
+              the same procedure used to build the dataset. Test accuracy is 98.6 percent.
+            </p>
+            <p class="project-stack">PyTorch &middot; CNN &middot; Canvas API &middot; MNIST</p>
           </div>
-          <h3 class="project-title">Digit Recognizer</h3>
-          <p class="project-desc">
-            A convolutional network trained on MNIST classifies handwritten digits as they are
-            drawn and displays the full probability distribution. Strokes are normalized with
-            the same procedure used to build the dataset. Test accuracy is 98.6 percent.
-          </p>
-          <div class="project-tags">
-            <span>PyTorch</span><span>CNN</span><span>Canvas API</span><span>MNIST</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://digits.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/digit-recognizer" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://digits.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/digit-recognizer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-algo">Algorithms</span>
-            <span class="project-category">Graph Search</span>
+        <article class="project-row">
+          <div class="project-no">03</div>
+          <div class="project-main">
+            <div class="project-meta">Algorithms<span class="psep">&middot;</span><span class="pcat">Graph Search</span></div>
+            <h3 class="project-title">Pathfinding Visualizer</h3>
+            <p class="project-desc">
+              A*, Dijkstra, Greedy Best-First, BFS, and DFS animated on an editable grid with
+              walls, weighted terrain, and generated mazes. Each run reports nodes visited, path
+              cost, and whether the algorithm guarantees a shortest path.
+            </p>
+            <p class="project-stack">JavaScript &middot; A* Search &middot; Binary Heap &middot; Maze Generation</p>
           </div>
-          <h3 class="project-title">Pathfinding Visualizer</h3>
-          <p class="project-desc">
-            A*, Dijkstra, Greedy Best-First, BFS, and DFS animated on an editable grid with
-            walls, weighted terrain, and generated mazes. Each run reports nodes visited, path
-            cost, and whether the algorithm guarantees a shortest path.
-          </p>
-          <div class="project-tags">
-            <span>JavaScript</span><span>A* Search</span><span>Binary Heap</span><span>Maze Generation</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://pathfinding.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/pathfinding-visualizer" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://pathfinding.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/pathfinding-visualizer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-nlp">NLP</span>
-            <span class="project-category">Language Modeling</span>
+        <article class="project-row">
+          <div class="project-no">04</div>
+          <div class="project-main">
+            <div class="project-meta">Natural Language<span class="psep">&middot;</span><span class="pcat">Language Modeling</span></div>
+            <h3 class="project-title">Language Model Playground</h3>
+            <p class="project-desc">
+              A character-level n-gram model built from classic texts or any pasted sample.
+              Context length and temperature sliders control coherence and variety, the same
+              parameters used in modern language models.
+            </p>
+            <p class="project-stack">Python &middot; N-gram Models &middot; Temperature Sampling</p>
           </div>
-          <h3 class="project-title">Language Model Playground</h3>
-          <p class="project-desc">
-            A character-level n-gram model built from classic texts or any pasted sample.
-            Context length and temperature sliders control coherence and variety, the same
-            parameters used in modern language models.
-          </p>
-          <div class="project-tags">
-            <span>Python</span><span>N-gram Models</span><span>Temperature Sampling</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://textgen.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/text-generator" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://textgen.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/text-generator" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-game">Game AI</span>
-            <span class="project-category">Adversarial Search</span>
+        <article class="project-row">
+          <div class="project-no">05</div>
+          <div class="project-main">
+            <div class="project-meta">Game AI<span class="psep">&middot;</span><span class="pcat">Adversarial Search</span></div>
+            <h3 class="project-title">Chess Bot</h3>
+            <p class="project-desc">
+              Play Stockfish 16 at adjustable strength from 100 to 3600 ELO with a live evaluation
+              bar, captured piece display, algebraic move history, and a hint engine, driven by a
+              python-chess backend.
+            </p>
+            <p class="project-stack">Python &middot; Stockfish 16 &middot; UCI Protocol &middot; chess.js</p>
           </div>
-          <h3 class="project-title">Chess Bot</h3>
-          <p class="project-desc">
-            Play Stockfish 16 at adjustable strength from 100 to 3600 ELO with a live evaluation
-            bar, captured piece display, algebraic move history, and a hint engine, driven by a
-            python-chess backend.
-          </p>
-          <div class="project-tags">
-            <span>Python</span><span>Stockfish 16</span><span>UCI Protocol</span><span>chess.js</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://chess.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/chess-bot" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://chess.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/chess-bot" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-nlp">NLP</span>
-            <span class="project-category">Transformers + Market Data</span>
+        <article class="project-row">
+          <div class="project-no">06</div>
+          <div class="project-main">
+            <div class="project-meta">Natural Language<span class="psep">&middot;</span><span class="pcat">Transformers + Market Data</span></div>
+            <h3 class="project-title">Market Sentiment Analyzer</h3>
+            <p class="project-desc">
+              Candlestick charts, volume, and company statistics for any ticker over selectable
+              periods, with recent headlines classified by a DistilRoBERTa transformer fine-tuned
+              on financial news and aggregated per stock.
+            </p>
+            <p class="project-stack">Transformers &middot; DistilRoBERTa &middot; yfinance &middot; Plotly</p>
           </div>
-          <h3 class="project-title">Market Sentiment Analyzer</h3>
-          <p class="project-desc">
-            Candlestick charts, volume, and company statistics for any ticker over selectable
-            periods, with recent headlines classified by a DistilRoBERTa transformer fine-tuned
-            on financial news and aggregated per stock.
-          </p>
-          <div class="project-tags">
-            <span>Transformers</span><span>DistilRoBERTa</span><span>yfinance</span><span>Plotly</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://sentiment.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/sentiment-analyzer" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://sentiment.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/sentiment-analyzer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-cv">Vision</span>
-            <span class="project-category">Transfer Learning</span>
+        <article class="project-row">
+          <div class="project-no">07</div>
+          <div class="project-main">
+            <div class="project-meta">Computer Vision<span class="psep">&middot;</span><span class="pcat">Transfer Learning</span></div>
+            <h3 class="project-title">Image Classifier</h3>
+            <p class="project-desc">
+              Classifies images with ResNet-50, EfficientNet-B0, or MobileNet-V3 pretrained on
+              ImageNet. Inference runs on the club GPU when available and falls back to CPU
+              automatically.
+            </p>
+            <p class="project-stack">PyTorch &middot; ResNet-50 &middot; ImageNet &middot; GPU/CPU Failover</p>
           </div>
-          <h3 class="project-title">Image Classifier</h3>
-          <p class="project-desc">
-            Classifies images with ResNet-50, EfficientNet-B0, or MobileNet-V3 pretrained on
-            ImageNet. Inference runs on the club GPU when available and falls back to CPU
-            automatically.
-          </p>
-          <div class="project-tags">
-            <span>PyTorch</span><span>ResNet-50</span><span>ImageNet</span><span>GPU/CPU Failover</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://classifier.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/image-classifier" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://classifier.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/image-classifier" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-gen">Generative</span>
-            <span class="project-category">Motion Synthesis</span>
+        <article class="project-row">
+          <div class="project-no">08</div>
+          <div class="project-main">
+            <div class="project-meta">Generative<span class="psep">&middot;</span><span class="pcat">Motion Synthesis</span></div>
+            <h3 class="project-title">Image Animator</h3>
+            <p class="project-desc">
+              Generates a short video clip from a still image and a written prompt using a video
+              diffusion model. Includes an ethics agreement, consent rules for images of real
+              people, and a guide to recognizing synthetic video.
+            </p>
+            <p class="project-stack">Motion Models &middot; Club GPUs &middot; AI Ethics</p>
           </div>
-          <h3 class="project-title">Image Animator</h3>
-          <p class="project-desc">
-            Generates a short video clip from a still image and a written prompt using a video
-            diffusion model. Includes an ethics agreement, consent rules for images of real
-            people, and a guide to recognizing synthetic video.
-          </p>
-          <div class="project-tags">
-            <span>Motion Models</span><span>Club GPUs</span><span>AI Ethics</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://animate.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/image-animator" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://animate.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/image-animator" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <span class="project-tag tag-gen">Generative</span>
-            <span class="project-category">Image Processing</span>
+        <article class="project-row">
+          <div class="project-no">09</div>
+          <div class="project-main">
+            <div class="project-meta">Generative<span class="psep">&middot;</span><span class="pcat">Image Processing</span></div>
+            <h3 class="project-title">Art Style Transfer</h3>
+            <p class="project-desc">
+              Restyles photos with an image-to-image diffusion model driven by a written prompt,
+              with adjustable strength. Six filters built from classical image-processing
+              operations are available as a separate mode.
+            </p>
+            <p class="project-stack">PIL &middot; NumPy &middot; Convolution Kernels</p>
           </div>
-          <h3 class="project-title">Art Style Transfer</h3>
-          <p class="project-desc">
-            Restyles photos with an image-to-image diffusion model driven by a written prompt,
-            with adjustable strength. Six filters built from classical image-processing
-            operations are available as a separate mode.
-          </p>
-          <div class="project-tags">
-            <span>PIL</span><span>NumPy</span><span>Convolution Kernels</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://style.spbdatascience.org" target="_blank" class="action-btn action-open">Launch</a>
-            <a href="https://github.com/SPB-AI-Data-Science-Club/style-transfer" target="_blank" class="action-btn action-source">View Source Code</a>
+          <div class="project-links">
+            <a href="https://style.spbdatascience.org" target="_blank" class="btn-solid sm">Launch</a>
+            <a href="https://github.com/SPB-AI-Data-Science-Club/style-transfer" target="_blank" class="btn-text">Source &#8599;</a>
           </div>
         </article>
 
@@ -255,7 +222,7 @@
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="footer" style="margin-top: 5rem;">
     <div class="footer-inner">
       <span class="footer-left">SPB AI &amp; Data Science Club</span>
       <a href="https://github.com/SPB-AI-Data-Science-Club" target="_blank" class="footer-gh">
