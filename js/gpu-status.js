@@ -64,8 +64,8 @@
     }
     document.getElementById('gpuPopRows').innerHTML =
       row(online ? 'on' : 'off', 'Necron', online ? shortName(d.gpu) : 'RTX 5080', usage) +
-      row('off', '-', 'RTX 5090', 'Offline') +
-      row('off', '-', 'RTX 5080', 'Offline');
+      row('off', 'Storm', 'RTX 5090', 'Offline') +
+      row('off', 'Goldor', 'RTX 5080', 'Offline');
   }
 
   var timer = null;
