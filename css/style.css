@@ -402,6 +402,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 .page-header .section-title { margin-top: .6rem; }
+.page-header.compact { margin-bottom: 1.75rem; }
 
 .page-intro {
   font-size: 1.15rem;
@@ -429,16 +430,10 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-faint);
 }
 
-/* Offset feature frame: photo sits right of axis on a tilted blue mat */
+/* Feature photo: full width of the page column */
 .photo-feature {
   position: relative;
-  width: min(880px, 94%);
-  margin-left: auto;
-}
-.photo-feature .photo-placeholder {
-  position: relative;
-  transform: rotate(-1.2deg);
-  background: var(--card);
+  width: 100%;
 }
 
 /* Photo band: one straight strip drifting left to right */
@@ -583,7 +578,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ── About: description ── */
 .about-desc {
-  max-width: 66ch;
   margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 .about-desc p {
@@ -718,7 +712,7 @@ a { color: inherit; text-decoration: none; }
   }
 
   .photo-placeholder { height: 260px; }
-  .photo-feature { width: 96%; }
+
 
   .demo-banner { flex-direction: column; align-items: flex-start; padding: 1.6rem 1.75rem; border-radius: 12px 36px 12px 36px; }
 }
@@ -766,7 +760,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   border: 1px solid var(--rule);
   display: block;
-  transform: rotate(-1.2deg);
 }
 @media (max-width: 720px) {
   .photo-feature .photo-img { height: 260px; }
