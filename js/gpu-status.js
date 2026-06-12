@@ -25,16 +25,14 @@
     /* Enhanced pill: machine light stack + live utilization bar */
     '#gpuPill, .gpu-status-pill, .gpu-pill{gap:.6rem !important;padding:.4rem .85rem !important;transition:border-color .2s, box-shadow .2s}',
     '#gpuPill:hover{border-color:#3f74d4 !important;box-shadow:0 0 12px rgba(63,116,212,.25)}',
-    '.gpu-ledstack{display:flex;flex-direction:column;gap:3px;flex-shrink:0}',
-    '.gpu-ledstack i{width:6px;height:6px;border-radius:50%;background:#3d4d6e;display:block;transition:background .3s, box-shadow .3s}',
-    '.gpu-ledstack i.on{background:#3ecb78;box-shadow:0 0 4px #3ecb78aa;animation:gpuLedPulse 2.2s ease-in-out infinite}',
-    '.gpu-ledstack i.busy{background:#e3ab47;box-shadow:0 0 4px #e3ab47aa;animation:gpuLedPulse 1.1s ease-in-out infinite}',
-    '.gpu-ledstack i.off{background:#e35d5d;opacity:.75}',
-    '@keyframes gpuLedPulse{0%,100%{opacity:1}50%{opacity:.45}}',
-    '.gpu-mini{display:flex;flex-direction:column;gap:2px;flex-shrink:0;width:44px}',
-    '.gpu-mini-label{font-size:.5rem;font-weight:700;letter-spacing:.08em;color:#6e7f9d;text-transform:uppercase;line-height:1}',
-    '.gpu-mini-bar{display:block;height:5px;border-radius:999px;background:rgba(110,127,157,.25);overflow:hidden}',
-    '.gpu-mini-fill{display:block;height:5px;width:0%;border-radius:999px;background:#3ecb78;transition:width .9s ease, background .9s ease}'
+    '.gpu-bars{display:flex;flex-direction:column;gap:3px;flex-shrink:0}',
+    '.gpu-bar-row{display:flex;align-items:center;gap:5px}',
+    '.gpu-bar-track{display:block;width:42px;height:5px;border-radius:999px;background:rgba(110,127,157,.22);overflow:hidden}',
+    '.gpu-bar-fill{display:block;height:5px;width:0%;border-radius:999px;background:#3d4d6e;transition:width .9s ease, background .9s ease}',
+    '.gpu-bar-fill.on{background:#3ecb78}',
+    '.gpu-bar-fill.busy{background:#e3ab47}',
+    '.gpu-bar-fill.off{background:#e35d5d}',
+    '.gpu-bar-pct{font-size:.52rem;font-weight:700;letter-spacing:.04em;color:#6e7f9d;font-variant-numeric:tabular-nums;line-height:1;min-width:24px;text-align:right}'
   ].join('\n');
   var style = document.createElement('style');
   style.textContent = css;
@@ -126,27 +124,28 @@
   var legacyDot = pill.querySelector('#gpuDot, .gd, .gpu-dot');
   if (legacyDot) legacyDot.style.display = 'none';
 
-  var leds = document.createElement('span');
-  leds.className = 'gpu-ledstack';
-  leds.innerHTML = '<i id="gpuLedNecron" title="Necron"></i><i id="gpuLedStorm" class="off" title="Storm"></i><i id="gpuLedGoldor" class="off" title="Goldor"></i>';
-  pill.insertBefore(leds, pill.firstChild);
-
-  var mini = document.createElement('span');
-  mini.className = 'gpu-mini';
-  mini.innerHTML = '<span class="gpu-mini-label" id="gpuMiniLabel">load</span>' +
-                   '<span class="gpu-mini-bar"><span class="gpu-mini-fill" id="gpuMiniFill"></span></span>';
-  pill.appendChild(mini);
+  var bars = document.createElement('span');
+  bars.className = 'gpu-bars';
+  bars.innerHTML =
+    '<span class="gpu-bar-row" title="Necron"><span class="gpu-bar-track"><span class="gpu-bar-fill" id="gpuBarNecron"></span></span><span class="gpu-bar-pct" id="gpuPctNecron">--</span></span>' +
+    '<span class="gpu-bar-row" title="Storm"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarStorm" style="width:100%"></span></span><span class="gpu-bar-pct" id="gpuPctStorm">--%</span></span>' +
+    '<span class="gpu-bar-row" title="Goldor"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarGoldor" style="width:100%"></span></span><span class="gpu-bar-pct" id="gpuPctGoldor">--%</span></span>';
+  pill.appendChild(bars);
 
   function paint(d) {
-    var led = document.getElementById('gpuLedNecron');
-    var fill = document.getElementById('gpuMiniFill');
-    var label = document.getElementById('gpuMiniLabel');
+    var fill = document.getElementById('gpuBarNecron');
+    var pct = document.getElementById('gpuPctNecron');
     var online = d && (d.status === 'ready' || d.status === 'busy');
-    led.className = !online ? 'off' : (d.status === 'busy' ? 'busy' : 'on');
     var util = (d && typeof d.util === 'number') ? d.util : 0;
-    fill.style.width = (online ? Math.max(util, 2) : 0) + '%';
-    fill.style.background = util >= 80 ? '#e35d5d' : util >= 40 ? '#e3ab47' : '#3ecb78';
-    label.textContent = online ? util + '%' : 'load';
+    if (!online) {
+      fill.className = 'gpu-bar-fill off';
+      fill.style.width = '100%';
+      pct.textContent = '--%';
+    } else {
+      fill.className = 'gpu-bar-fill ' + (d.status === 'busy' ? 'busy' : 'on');
+      fill.style.width = Math.max(util, 4) + '%';
+      pct.textContent = util + '%';
+    }
   }
 
   function pollPill() {
