@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=46" />
+  <link rel="stylesheet" href="css/style.css?v=48" />
 </head>
 <body>
 
@@ -136,6 +136,35 @@
       track.appendChild(img);
     });
   }
+
+  // Drift via the Web Animations API so hovering can smoothly ease the speed
+  // down (not stop) and then accelerate back to full speed on leave. Falls back
+  // to the plain CSS animation if WAAPI or motion isn't available.
+  var band = document.getElementById('photoBand');
+  if (!band || !track.animate ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  band.classList.add('js-drift'); // disables the CSS fallback animation
+  var anim = track.animate(
+    [{ transform: 'translateX(-50%)' }, { transform: 'translateX(0)' }],
+    { duration: 80000, iterations: Infinity, easing: 'linear' }
+  );
+
+  var SLOW = 0.28, FULL = 1;     // hovered speed vs normal speed
+  var rate = FULL, target = FULL, raf = null;
+  function tick(){
+    // Exponential ease toward the target rate: smooth, no sudden jumps.
+    rate += (target - rate) * 0.07;
+    if (Math.abs(target - rate) < 0.002) { rate = target; raf = null; }
+    anim.playbackRate = rate;
+    if (raf !== null) raf = requestAnimationFrame(tick);
+  }
+  function rampTo(v){
+    target = v;
+    if (raf === null) { raf = requestAnimationFrame(tick); }
+  }
+  band.addEventListener('mouseenter', function(){ rampTo(SLOW); });
+  band.addEventListener('mouseleave', function(){ rampTo(FULL); });
 })();
 </script>
 <script src="/js/gpu-status.js?v=7" defer></script>
