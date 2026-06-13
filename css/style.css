@@ -421,12 +421,44 @@ a { color: inherit; text-decoration: none; }
   padding: clamp(3.5rem, 7vw, 5.5rem) 0 0;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(340px, 36vw, 480px);
+  grid-template-columns: minmax(0, 1fr) clamp(370px, 40vw, 540px);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
 .event-hero-text .section-title { margin-top: .6rem; }
 .event-hero .page-intro { margin-top: 1.5rem; }
+
+/* Big, enticing sign-up call to action */
+.signup-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 1.9rem;
+  padding: 1rem 2.5rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  border-radius: 11px;
+  box-shadow: 0 12px 30px rgba(63, 116, 212, .38);
+  transition: transform .18s ease, background .18s, box-shadow .18s;
+}
+.signup-btn:hover {
+  background: var(--blue-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px rgba(63, 116, 212, .5);
+}
+.signup-arrow { transition: transform .18s ease; }
+.signup-btn:hover .signup-arrow { transform: translateX(4px); }
+
+/* Detail boxes tucked under the hero text, two across */
+.event-hero-text .event-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2.2rem;
+  margin-bottom: 0;
+}
 .event-hosts {
   margin-top: 1rem;
   font-size: .92rem;
@@ -485,16 +517,23 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* ── Map embed (Upcoming: Getting There) ── */
+/* ── Map embed (Upcoming: Getting There) — compact, map beside the address ── */
+.getting-there { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.map-row {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) 1fr;
+  gap: 1.6rem;
+  align-items: center;
+  margin-top: 1rem;
+}
 .map-frame {
-  margin-top: 1.25rem;
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   border: 1px solid var(--rule);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(20, 31, 54, .12);
+  box-shadow: 0 8px 22px rgba(20, 31, 54, .12);
 }
 .map-frame iframe {
   position: absolute;
@@ -505,13 +544,13 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 .map-note {
-  margin-top: 1rem;
   font-size: .95rem;
+  line-height: 1.6;
   color: var(--ink-soft);
 }
-.map-note .event-link { font-weight: 600; }
-@media (max-width: 640px) {
-  .map-frame { aspect-ratio: 4 / 3; }
+.map-note .event-link { font-weight: 600; display: inline-block; margin-top: .4rem; }
+@media (max-width: 600px) {
+  .map-row { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 /* ── Placeholders (photo / gallery) ── */
