@@ -57,7 +57,7 @@ a { color: inherit; text-decoration: none; }
 ::selection { background: var(--blue); color: #fff; }
 
 .container {
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 4vw, 3rem);
 }
@@ -73,7 +73,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .masthead-inner {
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: .85rem clamp(1.25rem, 4vw, 3rem);
   display: flex;
@@ -417,8 +417,8 @@ a { color: inherit; text-decoration: none; }
   padding: clamp(3.5rem, 7vw, 5.5rem) 0 0;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(260px, 30vw, 360px);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) clamp(340px, 36vw, 480px);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
 .event-hero-text .section-title { margin-top: .6rem; }
@@ -475,10 +475,39 @@ a { color: inherit; text-decoration: none; }
     gap: 2rem;
   }
   .poster-pin {
-    max-width: 340px;
+    max-width: 400px;
     margin: .5rem auto 0;
     transform: rotate(0deg);
   }
+}
+
+/* ── Map embed (Upcoming: Getting There) ── */
+.map-frame {
+  margin-top: 1.25rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(20, 31, 54, .12);
+}
+.map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.map-note {
+  margin-top: 1rem;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+.map-note .event-link { font-weight: 600; }
+@media (max-width: 640px) {
+  .map-frame { aspect-ratio: 4 / 3; }
 }
 
 /* ── Placeholders (photo / gallery) ── */
@@ -881,7 +910,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--paper-deep);
 }
 .footer-inner {
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 2rem clamp(1.25rem, 4vw, 3rem);
   display: flex;
