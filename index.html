@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=38" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
 </head>
 <body>
 
@@ -82,7 +82,7 @@
       <a class="demo-banner" href="/upcoming" style="margin-bottom: clamp(3rem, 6vw, 4.5rem);">
         <div>
           <div class="demo-banner-title">Upcoming: Second Annual Machine Learning Workshop &amp; Mini Datathon</div>
-          <div class="demo-banner-sub">A hands-on workshop and team data competition at the Stratford Preparatory Blackford Auditorium, back after the success of our inaugural 2025 workshop. Cash prizes for the top three teams and lunch provided. Open to all middle school students, in the club or not.</div>
+          <div class="demo-banner-sub">A hands-on workshop and team data competition on Saturday, September 26 at the Stratford Preparatory Blackford Auditorium, back after the success of our inaugural 2025 workshop. Gift card prizes for the top three teams and lunch provided. Open to all middle school students, in the club or not.</div>
         </div>
         <span class="demo-banner-btn">Details</span>
       </a>
@@ -99,26 +99,6 @@
     </div>
   </footer>
 
-
-<script id="gpu-status-js">
-(function(){
-  function upd(){
-    fetch('https://spbdatascience.org/api/gpu-status')
-      .then(function(r){return r.json();})
-      .then(function(d){
-        var s=d.status||'offline';
-        var dot=document.getElementById('gpuDot');
-        var txt=document.getElementById('gpuTxt');
-        dot.className='gd '+(s==='ready'||s==='busy'?s:'');
-        txt.className='gt '+(s==='ready'||s==='busy'?s:'');
-        txt.textContent=s==='ready'?'GPUs Online':s==='busy'?'GPUs Busy':'GPUs Offline';
-      }).catch(function(){
-        document.getElementById('gpuTxt').textContent='GPUs Offline';
-      });
-  }
-  upd();setInterval(upd,20000);
-})();
-</script>
 
 <script>
 (function(){
@@ -150,12 +130,15 @@
       var img = document.createElement('img');
       img.src = src;
       img.alt = 'Club session photo';
-      img.loading = 'eager';
+      // Band sits below the hero, ticker, and banner, so defer loading until
+      // it scrolls into view rather than blocking the initial render.
+      img.loading = 'lazy';
+      img.decoding = 'async';
       track.appendChild(img);
     });
   }
 })();
 </script>
-<script src="/js/gpu-status.js?v=6" defer></script>
+<script src="/js/gpu-status.js?v=7" defer></script>
 </body>
 </html>

@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=38" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
 </head>
 <body>
 
@@ -232,26 +232,6 @@
   </footer>
 
 
-  <script>
-  (function(){
-    function upd(){
-      fetch('https://spbdatascience.org/api/gpu-status')
-        .then(function(r){return r.json();})
-        .then(function(d){
-          var s=d.status||'offline';
-          var dot=document.getElementById('gpuDot');
-          var txt=document.getElementById('gpuTxt');
-          dot.className='gd '+(s==='ready'||s==='busy'?s:'');
-          txt.className='gt '+(s==='ready'||s==='busy'?s:'');
-          txt.textContent=s==='ready'?'GPUs Online':s==='busy'?'GPUs Busy':'GPUs Offline';
-        }).catch(function(){
-          document.getElementById('gpuTxt').textContent='GPUs Offline';
-        });
-    }
-    upd();setInterval(upd,20000);
-  })();
-  </script>
-
 <script>
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -265,6 +245,6 @@
   targets.forEach(function(t){ t.classList.add('reveal'); io.observe(t); });
 })();
 </script>
-<script src="/js/gpu-status.js?v=6" defer></script>
+<script src="/js/gpu-status.js?v=7" defer></script>
 </body>
 </html>

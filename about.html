@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://spbdatascience.org/logo.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=38" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
 </head>
 <body>
 
@@ -56,7 +56,7 @@
       </div>
 
       <div class="photo-feature" style="margin: 3rem 0 4rem;">
-        <img class="photo-img" src="/img/club-photo.jpg" alt="SPB AI and Data Science Club members" />
+        <img class="photo-img" src="/img/club-photo.jpg" width="1400" height="1050" loading="lazy" decoding="async" alt="SPB AI and Data Science Club members" />
       </div>
 
       <span class="kicker">Leadership</span>
@@ -65,7 +65,10 @@
 
         <div class="roster-row">
           <span class="roster-role">President</span>
-          <span class="roster-name">Anthony Wang</span>
+          <span class="roster-person">
+            <span class="roster-name">Anthony Wang</span>
+            <a class="roster-email" href="mailto:27awang1@stratfordschools.net">27awang1@stratfordschools.net</a>
+          </span>
           <span class="roster-grade">12th Grade</span>
         </div>
 
@@ -73,22 +76,34 @@
 
         <div class="roster-row">
           <span class="roster-role">Vice President</span>
-          <span class="roster-name">Vansh Gutgutia</span>
+          <span class="roster-person">
+            <span class="roster-name">Vansh Gutgutia</span>
+            <a class="roster-email" href="mailto:28vgutgutia@stratfordschools.net">28vgutgutia@stratfordschools.net</a>
+          </span>
           <span class="roster-grade">11th Grade</span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Secretary</span>
-          <span class="roster-name">Alicia Bernal</span>
+          <span class="roster-person">
+            <span class="roster-name">Alicia Bernal</span>
+            <a class="roster-email" href="mailto:27abernal@stratfordschools.net">27abernal@stratfordschools.net</a>
+          </span>
           <span class="roster-grade">12th Grade</span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Treasurer</span>
-          <span class="roster-name">Horace Nabers</span>
+          <span class="roster-person">
+            <span class="roster-name">Horace Nabers</span>
+            <a class="roster-email" href="mailto:28hnabers@stratfordschools.net">28hnabers@stratfordschools.net</a>
+          </span>
           <span class="roster-grade">11th Grade</span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Publicity Officer</span>
-          <span class="roster-name">Ethan Nguyen</span>
+          <span class="roster-person">
+            <span class="roster-name">Ethan Nguyen</span>
+            <a class="roster-email" href="mailto:27enguyen@stratfordschools.net">27enguyen@stratfordschools.net</a>
+          </span>
           <span class="roster-grade">12th Grade</span>
         </div>
 
@@ -96,25 +111,32 @@
 
         <div class="roster-row">
           <span class="roster-role">Vice President</span>
-          <span class="roster-name roster-name--empty">Position open</span>
+          <span class="roster-name roster-name--empty">TBD after elections</span>
           <span class="roster-grade"></span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Secretary</span>
-          <span class="roster-name roster-name--empty">Position open</span>
+          <span class="roster-name roster-name--empty">TBD after elections</span>
           <span class="roster-grade"></span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Treasurer</span>
-          <span class="roster-name roster-name--empty">Position open</span>
+          <span class="roster-name roster-name--empty">TBD after elections</span>
           <span class="roster-grade"></span>
         </div>
         <div class="roster-row">
           <span class="roster-role">Publicity Officer</span>
-          <span class="roster-name roster-name--empty">Position open</span>
+          <span class="roster-name roster-name--empty">TBD after elections</span>
           <span class="roster-grade"></span>
         </div>
 
+      </div>
+
+      <div class="contact-block">
+        <span class="kicker">Contact</span>
+        <p class="contact-line">For questions about the club, email
+          <a class="roster-email" href="mailto:datasciencespb@gmail.com">datasciencespb@gmail.com</a>
+          or reach any officer above directly.</p>
       </div>
 
     </div>
@@ -127,26 +149,6 @@
     </div>
   </footer>
 
-
-<script id="gpu-status-js">
-(function(){
-  function upd(){
-    fetch('https://spbdatascience.org/api/gpu-status')
-      .then(function(r){return r.json();})
-      .then(function(d){
-        var s=d.status||'offline';
-        var dot=document.getElementById('gpuDot');
-        var txt=document.getElementById('gpuTxt');
-        dot.className='gd '+(s==='ready'||s==='busy'?s:'');
-        txt.className='gt '+(s==='ready'||s==='busy'?s:'');
-        txt.textContent=s==='ready'?'GPUs Online':s==='busy'?'GPUs Busy':'GPUs Offline';
-      }).catch(function(){
-        document.getElementById('gpuTxt').textContent='GPUs Offline';
-      });
-  }
-  upd();setInterval(upd,20000);
-})();
-</script>
 
 <script>
 (function(){
@@ -161,6 +163,6 @@
   targets.forEach(function(t){ t.classList.add('reveal'); io.observe(t); });
 })();
 </script>
-<script src="/js/gpu-status.js?v=6" defer></script>
+<script src="/js/gpu-status.js?v=7" defer></script>
 </body>
 </html>

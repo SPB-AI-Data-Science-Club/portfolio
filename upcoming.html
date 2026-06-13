@@ -7,16 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <meta name="description" content="Upcoming events from the SPB AI & Data Science Club: the Second Annual Machine Learning Workshop and Mini Datathon at the Stratford Preparatory Blackford Auditorium." />
+  <meta name="description" content="Second Annual Machine Learning Workshop and Mini Datathon, Saturday September 26, 9:30 AM to 3:30 PM at the Stratford Preparatory Blackford Auditorium. Gift card prizes for the top three teams. Open to all middle school students." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SPB AI &amp; Data Science Club" />
   <meta property="og:title" content="Second Annual Machine Learning Workshop &amp; Mini Datathon - SPB AI &amp; Data Science Club" />
   <meta property="og:description" content="The second annual hands-on workshop and team data competition at the Stratford Preparatory Blackford Auditorium. Open to all middle school students. Cash prizes for the top three teams. Lunch and snacks provided. No experience required." />
   <meta property="og:url" content="https://spbdatascience.org/upcoming" />
-  <meta property="og:image" content="https://spbdatascience.org/logo.png" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://spbdatascience.org/img/workshop.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=38" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
 </head>
 <body>
 
@@ -46,24 +46,31 @@
   <div class="page-wrap">
     <div class="container">
 
-      <div class="page-header compact">
-        <span class="kicker">Upcoming Event</span>
-        <h1 class="section-title">Second Annual Machine Learning<br />Workshop &amp; Mini Datathon</h1>
-        <p class="page-intro">
-          A hands-on introduction to machine learning followed by a friendly team
-          competition on a real dataset, returning after the success of our
-          inaugural workshop in 2025. Open to all Stratford Preparatory Blackford
-          middle school students, whether or not they are in the AI &amp; Data Science
-          Club. No programming or AI experience is required; club members guide
-          every team from start to finish.
-        </p>
+      <div class="event-hero">
+        <div class="event-hero-text">
+          <span class="kicker">Upcoming Event</span>
+          <h1 class="section-title">Second Annual Machine Learning<br />Workshop &amp; Mini Datathon</h1>
+          <p class="event-hosts">Co-hosted with the Aerospace Engineering Club &middot; Sponsored by Random Forest Education</p>
+          <p class="page-intro">
+            A hands-on introduction to machine learning followed by a friendly team
+            competition on a real dataset, returning after the success of our
+            inaugural workshop in 2025. Open to all Stratford Preparatory Blackford
+            middle school students, whether or not they are in the AI &amp; Data Science
+            Club. No programming or AI experience is required; club members guide
+            every team from start to finish.
+          </p>
+        </div>
+        <figure class="poster-pin">
+          <img src="/img/workshop.png" width="1147" height="1485"
+               alt="Second Annual Machine Learning Workshop and Competition poster: Saturday September 26, 9:30 to 3:30, Stratford Preparatory Blackford Auditorium." />
+        </figure>
       </div>
 
       <div class="event-grid">
         <div class="event-card">
           <span class="event-card-label">Date &amp; Time</span>
-          <span class="event-card-value">To be announced</span>
-          <span class="event-card-note">Check back soon or follow club announcements.</span>
+          <span class="event-card-value">Saturday, September 26</span>
+          <span class="event-card-note">9:30 AM to 3:30 PM.</span>
         </div>
         <div class="event-card">
           <span class="event-card-label">Location</span>
@@ -86,18 +93,18 @@
         <div class="prize-row">
           <div class="prize-card prize-1">
             <span class="prize-place">1st Place</span>
-            <span class="prize-amount">$100</span>
+            <span class="prize-amount">$500</span>
           </div>
           <div class="prize-card prize-2">
             <span class="prize-place">2nd Place</span>
-            <span class="prize-amount">$75</span>
+            <span class="prize-amount">$300</span>
           </div>
           <div class="prize-card prize-3">
             <span class="prize-place">3rd Place</span>
-            <span class="prize-amount">$50</span>
+            <span class="prize-amount">$100</span>
           </div>
         </div>
-        <p class="prize-note">Additional smaller prizes will be awarded beyond the top three teams.</p>
+        <p class="prize-note">Awarded as gift cards to the top three teams, with additional prizes beyond the top three.</p>
       </section>
 
       <section class="event-section">
@@ -133,7 +140,7 @@
           <li>Open to all Stratford Preparatory Blackford middle school students; you do not need to be a member of the AI &amp; Data Science Club to attend.</li>
           <li>Teams are formed at the event, so you can come alone or with friends.</li>
           <li>Models train on the club's own GPU servers, the same infrastructure behind the <a href="/projects" class="event-link">nine live club projects</a>.</li>
-          <li>Questions are welcome; contact any club officer listed on the <a href="/about" class="event-link">About page</a>.</li>
+          <li>Questions are welcome; email <a href="mailto:datasciencespb@gmail.com" class="event-link">datasciencespb@gmail.com</a> or contact any club officer listed on the <a href="/about" class="event-link">About page</a>.</li>
         </ul>
       </section>
 
@@ -148,26 +155,6 @@
   </footer>
 
 
-<script id="gpu-status-js">
-(function(){
-  function upd(){
-    fetch('https://spbdatascience.org/api/gpu-status')
-      .then(function(r){return r.json();})
-      .then(function(d){
-        var s=d.status||'offline';
-        var dot=document.getElementById('gpuDot');
-        var txt=document.getElementById('gpuTxt');
-        dot.className='gd '+(s==='ready'||s==='busy'?s:'');
-        txt.className='gt '+(s==='ready'||s==='busy'?s:'');
-        txt.textContent=s==='ready'?'GPUs Online':s==='busy'?'GPUs Busy':'GPUs Offline';
-      }).catch(function(){
-        document.getElementById('gpuTxt').textContent='GPUs Offline';
-      });
-  }
-  upd();setInterval(upd,20000);
-})();
-</script>
-
 <script>
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -181,6 +168,6 @@
   targets.forEach(function(t){ t.classList.add('reveal'); io.observe(t); });
 })();
 </script>
-<script src="/js/gpu-status.js?v=6" defer></script>
+<script src="/js/gpu-status.js?v=7" defer></script>
 </body>
 </html>

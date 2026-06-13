@@ -31,7 +31,8 @@
     '.gpu-bar-fill{display:block;height:5px;width:0%;border-radius:999px;background:#3d4d6e;transition:width .9s ease, background .9s ease}',
     '.gpu-bar-fill.on{background:#3ecb78}',
     '.gpu-bar-fill.busy{background:#e3ab47}',
-    '.gpu-bar-fill.off{background:#e35d5d}',
+    /* Offline reads as a 0% dot pinned to the left, not a full red bar */
+    '.gpu-bar-fill.off{background:#e35d5d;width:5px}',
     '.gpu-bar-pct{font-size:.52rem;font-weight:700;letter-spacing:.04em;color:#6e7f9d;font-variant-numeric:tabular-nums;line-height:1;min-width:24px;text-align:right}'
   ].join('\n');
   var style = document.createElement('style');
@@ -128,18 +129,34 @@
   bars.className = 'gpu-bars';
   bars.innerHTML =
     '<span class="gpu-bar-row" title="Necron"><span class="gpu-bar-track"><span class="gpu-bar-fill" id="gpuBarNecron"></span></span><span class="gpu-bar-pct" id="gpuPctNecron">--</span></span>' +
-    '<span class="gpu-bar-row" title="Storm"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarStorm" style="width:100%"></span></span><span class="gpu-bar-pct" id="gpuPctStorm">--%</span></span>' +
-    '<span class="gpu-bar-row" title="Goldor"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarGoldor" style="width:100%"></span></span><span class="gpu-bar-pct" id="gpuPctGoldor">--%</span></span>';
+    '<span class="gpu-bar-row" title="Storm"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarStorm"></span></span><span class="gpu-bar-pct" id="gpuPctStorm">--%</span></span>' +
+    '<span class="gpu-bar-row" title="Goldor"><span class="gpu-bar-track"><span class="gpu-bar-fill off" id="gpuBarGoldor"></span></span><span class="gpu-bar-pct" id="gpuPctGoldor">--%</span></span>';
   pill.appendChild(bars);
 
+  // Update the pill's text label (folded in from the old per-page inline
+  // scripts so the endpoint is polled once, not twice).
+  function paintLabel(d) {
+    var dot = document.getElementById('gpuDot');
+    var txt = document.getElementById('gpuTxt');
+    if (!txt) return;
+    var s = (d && d.status) || 'offline';
+    var live = (s === 'ready' || s === 'busy');
+    if (dot) dot.className = 'gd ' + (live ? s : '');
+    txt.className = 'gt ' + (live ? s : '');
+    txt.textContent = s === 'ready' ? 'GPUs Online' : s === 'busy' ? 'GPUs Busy' : 'GPUs Offline';
+  }
+
   function paint(d) {
+    paintLabel(d);
     var fill = document.getElementById('gpuBarNecron');
     var pct = document.getElementById('gpuPctNecron');
+    if (!fill) return;
     var online = d && (d.status === 'ready' || d.status === 'busy');
     var util = (d && typeof d.util === 'number') ? d.util : 0;
     if (!online) {
+      // Offline: collapse to a small red dot on the left (0% usage)
       fill.className = 'gpu-bar-fill off';
-      fill.style.width = '100%';
+      fill.style.width = '5px';
       pct.textContent = '--%';
     } else {
       fill.className = 'gpu-bar-fill ' + (d.status === 'busy' ? 'busy' : 'on');
@@ -148,11 +165,13 @@
     }
   }
 
-  function pollPill() {
+  // Single poll loop drives the label, the pill bars, and (when open) the
+  // popup table, so the status endpoint is hit once per interval.
+  function poll() {
     fetch(API).then(function (r) { return r.json(); })
-      .then(paint)
-      .catch(function () { paint(null); });
+      .then(function (d) { paint(d); if (wrap.classList.contains('open')) render(d); })
+      .catch(function () { paint(null); if (wrap.classList.contains('open')) render(null); });
   }
-  pollPill();
-  setInterval(pollPill, 20000);
+  poll();
+  setInterval(poll, 20000);
 })();
