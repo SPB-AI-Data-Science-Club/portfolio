@@ -211,6 +211,14 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.1;
   color: var(--ink);
 }
+.section-title .title-sub {
+  display: block;
+  margin-top: .35rem;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink-faint);
+}
 
 /* ── Hero ── */
 .hero {
@@ -460,11 +468,15 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 0;
 }
 .event-hosts {
-  margin-top: 1rem;
-  font-size: .92rem;
-  font-weight: 600;
-  color: var(--ink-faint);
+  margin-top: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink-soft);
   letter-spacing: .01em;
+}
+.event-hosts strong {
+  font-weight: 700;
+  color: var(--blue-bright);
 }
 
 .poster-pin {
@@ -932,7 +944,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
   max-width: 60ch;
 }
-.contact-line a { color: var(--blue); font-weight: 500; }
+.contact-line a { color: var(--blue); font-weight: 500; font-size: inherit; }
 .contact-line a:hover { text-decoration: underline; }
 .roster-name--empty {
   font-family: var(--font-text);
